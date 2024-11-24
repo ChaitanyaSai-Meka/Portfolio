@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo-wolf.jpg" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Chaitanya Sai Meka" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Chaitanya Sai Meka">Chaitanya Sai Meka</h1>
+
+          <p class="title">Web Developer & Researcher</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:chaitanya@example.com" class="contact-link">chaitanyam141@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+91 6281424696" class="contact-link">+91 6281424696</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="2006-05-24">May 24, 2006</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Delhi NCR,India</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/chaitanyasai_meka" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/chaitanya-sai-meka" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Certificates</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm a Web Developer and Researcher from India, specializing in Python programming, web development, and cybersecurity solutions. I'm passionate about building 3D websites with minimalistic designs and dark themes.
+          </p>
+
+          <p>
+            My expertise extends to DDoS mitigation, networking concepts, and satellite research. I'm currently leading efforts in satellite research and development as the Head of the Research and Development core team of the Astronomy Club.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What I'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web Development</h4>
+
+                <p class="service-item-text">
+                  Building responsive and interactive websites using modern technologies.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Cybersecurity</h4>
+
+                <p class="service-item-text">
+                  Developing DDoS mitigation tools and implementing security solutions.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app1.png" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">3D Web Design</h4>
+
+                <p class="service-item-text">
+                  Creating immersive 3D websites with minimalistic designs and dark themes.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.png" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Satellite Research</h4>
+
+                <p class="service-item-text">
+                  Leading research and development efforts for communication satellites.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Dhanvin" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Dhanvin</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Chaitanya's expertise in cybersecurity and DDoS mitigation is impressive. His innovative approach to solving complex security challenges has been invaluable to our projects.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-3.png" alt="Geethika" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Geethika</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Working with Chaitanya on 3D website designs was a great experience. His ability to create visually stunning and user-friendly interfaces is remarkable.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Neelanshu" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Neelanshu</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Chaitanya's contributions to our satellite research project were invaluable. His technical knowledge and leadership skills drove the team to achieve significant milestones.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Priyanshu" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Priyanshu</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Chaitanya's e-book on Sacred Geography showcases his ability to blend technical knowledge with cultural insights. It's a testament to his diverse skill set and creativity.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials modal
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+              <time datetime="2021-06-14">14 June, 2021</time>
+
+              <div data-modal-text>
+                <p>
+                  Chaitanya's expertise in cybersecurity and DDoS mitigation is impressive. His innovative approach to solving complex security challenges has been invaluable to our projects.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <!--
+          - clients
+        -->
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title">Clients</h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-1-color.png" alt="client logo">
+              </a>
+            </li>
+
+            
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Newton School of Technology(NST)</h4>
+
+              <span>2024 — present</span>
+
+              <p class="timeline-text">
+                Studied Computer Science with a focus on web development and cybersecurity.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">GirlScript Summer of Code</h4>
+
+              <span>2024</span>
+
+              <p class="timeline-text">
+                Participated as a contributor, ranked 1605, and received a certificate.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Head of Research and Development</h4>
+
+              <span>2024 — Present</span>
+
+              <p class="timeline-text">
+                Leading the Research and Development core team of the Astronomy Club, focusing on satellite research and development.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Cybersecurity Specialist</h4>
+
+              <span>2023 — Present</span>
+
+              <p class="timeline-text">
+                Developing DDoS mitigation tools and implementing security solutions for various projects, including work for the defense ministry.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Web Developer</h4>
+
+              <span>2019 — Present</span>
+
+              <p class="timeline-text">
+                Creating responsive and interactive websites, specializing in 3D websites with minimalistic designs and dark themes.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Web development</h5>
+                <data value="90">60%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Cybersecurity</h5>
+                <data value="85">35%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 35%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Python programming</h5>
+                <data value="95">65%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 65%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Satellite research</h5>
+                <data value="80">60%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Marketing</h5>
+                <data value="80">75%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 75%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #Certificates
+      -->
+
+      <article class="certificates" data-page="certificates" style="align-content: center;">
+
+        <header>
+          <h2 class="h2 article-title">Certificates</h2>
+        </header>
+      
+        <section class="certificates">
+      
+      
+          <div class="filter-select-box">
+      
+            <button  data-select>
+
+      
+            </button>
+      
+      
+          </div>
+      
+          <ul class="certificate-list" style="display:flex; flex-wrap: wrap;">
+      
+            <li class="certificate-item active" data-filter-item data-category="Open-Source">
+              <a href="./assets/certificates/C1.png" target="_blank">
+      
+                <figure class="certificate-img">
+
+      
+                  <img style="width:400px; height: 250px; border-radius: 10px; margin: 20px;" src="./assets/certificates/C1.png" alt="GSSoC 2024 Extended Certificate" loading="lazy"/>
+                </figure>
+              </a>
+            </li>
+      
+            <li class="certificate-item active" data-filter-item data-category="Open-Source">
+              <a href="./assets/certificates/A.png" target="_blank">
+      
+                <figure class="certificate-img">
+      
+                  <img style="width:400px; height: 250px; border-radius: 10px; margin: 20px;" src="./assets/certificates/A.png" alt="GSSoC 2024 Extended Certificate" loading="lazy"/>
+                </figure>
+      
+              </a>
+            </li>
+      
+            <li class="certificate-item active" data-filter-item data-category="Cybersecurity">
+              <a href="./assets/certificates/B.jpg" target="_blank">
+      
+                <figure class="certificate-img">
+      
+                  <img style="width:400px; height: 250px; border-radius: 10px; margin: 20px;" src="./assets/certificates/B.jpg" alt="GSSoC 2024 Extended Certificate" loading="lazy"/>
+                </figure>
+      
+              </a>
+            </li>
+            <li class="certificate-item active" data-filter-item data-category="Marketing">
+              <a href="./assets/certificates/D.jpg" target="_blank">
+      
+                <figure class="certificate-img">
+      
+                  <img style="width:400px; height: 250px; border-radius: 10px; margin: 20px;" src="./assets/certificates/D.jpg" alt="GSSoC 2024 Extended Certificate" loading="lazy"/>
+                </figure>
+      
+              </a>
+            </li>
+            <li class="certificate-item active" data-filter-item data-category="Marketing">
+              <a href="./assets/certificates/E.png" target="_blank">
+      
+                <figure class="certificate-img">
+      
+                  <img style="width:400px; height: 250px; border-radius: 10px; margin: 20px;" src="./assets/certificates/E.png" alt="GSSoC 2024 Extended Certificate" loading="lazy"/>
+                </figure>
+      
+              </a>
+            </li>
+            <li class="certificate-item active" data-filter-item data-category="Cybersecurity">
+              <a href="./assets/certificates/F.jpg" target="_blank">
+      
+                <figure class="certificate-img">
+      
+                  <img style="width:400px; height: 250px; border-radius: 10px; margin: 20px;" src="./assets/certificates/F.jpg" alt="GSSoC 2024 Extended Certificate" loading="lazy"/>
+                </figure>
+      
+      
+              </a>
+            </li>
+          </ul>
+      
+        </section>
+      
+      </article>
+      
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3490.1503215831754!2d77.08754637614629!3d28.982916268082064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390db15c164f0a91%3A0xcab7be79bc1b3bac!2sNewton%20School%20of%20Technology%2C%20Delhi%20NCR!5e0!3m2!1sen!2sin!4v1732460601676!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="#" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
