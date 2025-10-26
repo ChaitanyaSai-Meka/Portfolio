@@ -33,6 +33,7 @@ const Skills = () => {
     [0, 201, 167],   //React Native - Bright Teal 
     [255, 166, 17], // Firebase - Dark Tangerine
     [240, 81, 51],  // Swift - Vivid Orange
+    [36, 150, 237], // Docker - Blue
   ];
 
   const icons = [
@@ -132,6 +133,12 @@ const Skills = () => {
       alt="Swift"
       className="w-10 h-10 px-1 pb-1 object-contain"
     />,
+    <img
+      key="Docker_Logo"
+      src="/docker_logo.png"
+      alt="Docker"
+      className="w-10 h-10 px-1 pb-1 object-contain"
+    />,
   ];
 
   const audioSources = [
@@ -156,6 +163,7 @@ const Skills = () => {
     "/d6-piano.mp3",
     "/b6-piano.mp3",
     "/g6-piano.mp3",
+    "/d6-piano.mp3",
   ];
 
   const audioRefs = useRef([]);
