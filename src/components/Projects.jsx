@@ -10,6 +10,14 @@ import ProjectImage from "./utils/ProjectImage";
 
 const projects = [
   {
+    title: "Univa",
+    description:
+      "UNIVA — Document Search Platform",
+    link: "https://univa-ten.vercel.app/",
+    image: "/univa.png",
+    blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
+  },
+  {
     title: "Apple Website Clone",
     description:
       "A modern, animated clone of the official Apple website made with smooth scroll and transitions.",
