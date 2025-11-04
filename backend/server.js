@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 
-app.use(cors())
+app.use(cors("https://chaitanya-sai-meka.vercel.app/"))
 app.use(express.json());
 
 const pool = new Pool({
