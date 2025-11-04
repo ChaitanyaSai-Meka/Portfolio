@@ -9,6 +9,8 @@ import Loader from './components/Loader';
 import EnterScreen from './components/EnterScreen';
 import Footer from './components/Footer';
 import Skills from './components/Skills';
+import Logbook from './components/LogBook';
+import NotFound from './components/NotFound';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Helmet } from 'react-helmet-async';
 
@@ -106,6 +108,8 @@ useEffect(() => {
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/skills" element={<Skills />} />
+              <Route path="/logbook" element={<Logbook />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
             <SpeedInsights />
