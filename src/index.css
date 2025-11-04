@@ -42,13 +42,6 @@
   width: calc(100% - 20px);
 }
 
-/* Music */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Music Ends */
 
 /* HERO SECTION */
 .hero-section {
@@ -142,8 +135,8 @@
 
 /* ABOUT SECTION PLACEHOLDER */
 .coming-soon-text {
-  font-size: 70px;
-  font-weight: 800;
+  font-size: 60px;
+  font-weight: 750;
   text-align: center;
   background: linear-gradient(
     90deg,
@@ -157,7 +150,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 8s ease-in-out infinite;
+  animation: shimmer 9s ease-in-out infinite;
   letter-spacing: 2px;
   text-transform: capitalize;
 }
