@@ -192,7 +192,7 @@ const LogBook = () => {
           {/* Blurred backdrop sides */}
           <motion.div
             initial={{ backdropFilter: "blur(0px)" }}
-            animate={{ backdropFilter: "blur(8px)" }}
+            animate={{ backdropFilter: "blur(2px)" }}
             exit={{ backdropFilter: "blur(0px)" }}
             transition={{ duration: 0.3 }}
             className="absolute inset-0 bg-black/60 cursor-pointer"

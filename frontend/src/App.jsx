@@ -34,6 +34,19 @@ useEffect(() => {
   setInitialCheckDone(true);
 }, []);
 
+useEffect(() => {
+  const warmUpServer = async () => {
+    try {
+      await fetch("https://portfolio-m60v.onrender.com/health");
+      console.log(" Backend warmed up");
+    } catch (err) {
+      console.error("Backend warm-up failed:", err);
+    }
+  };
+
+  warmUpServer();
+}, []);
+
   const handleStart = () => {
     sessionStorage.setItem('alreadyVisited', 'true');
     setStarted(true);
