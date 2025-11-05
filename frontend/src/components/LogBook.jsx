@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { cn } from "../lib/utils";
 import { PlusIcon, Search, X, ChevronDown } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const LogBook = () => {
@@ -120,8 +121,94 @@ const LogBook = () => {
     return lines.slice(0, maxLines).join(" ");
   };
 
+  const formatDateAndTime = (blog) => {
+    const ensureUTC = (isoStr) => {
+      if (typeof isoStr !== 'string') return isoStr;
+  if (/[zZ]|[+-]\d{2}:?\d{2}/.test(isoStr)) return isoStr;
+      return isoStr + 'Z';
+    };
+
+    let date = null;
+
+    if (blog.createdAt) {
+      const val = typeof blog.createdAt === 'string' ? ensureUTC(blog.createdAt) : blog.createdAt;
+      date = new Date(val);
+    }
+    else if (blog.date) {
+      let dateStr = blog.date;
+
+      if (blog.time) {
+        let timeStr = String(blog.time).trim();
+
+        if (dateStr.includes('T')) {
+          dateStr = dateStr.split('T')[0];
+        }
+        if (dateStr.includes(' ')) {
+          dateStr = dateStr.split(' ')[0];
+        }
+
+        timeStr = timeStr.split('+')[0].split('Z')[0].trim();
+
+        const timeParts = timeStr.split(':');
+        if (timeParts.length === 2) {
+          timeStr = `${timeStr}:00`;
+        } else if (timeParts.length === 1 && timeStr.length === 4) {
+          timeStr = `${timeStr.slice(0, 2)}:${timeStr.slice(2)}:00`;
+        }
+
+        let iso = `${dateStr}T${timeStr}`;
+        iso = ensureUTC(iso);
+        date = new Date(iso);
+      } else {
+        dateStr = dateStr.includes('T') ? dateStr : `${dateStr}T00:00:00`;
+        dateStr = ensureUTC(dateStr);
+        date = new Date(dateStr);
+      }
+    } else {
+      return null;
+    }
+
+    if (!date || isNaN(date.getTime())) {
+      return null;
+    }
+
+    const options = {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+      timeZone: 'Asia/Kolkata'
+    };
+
+    try {
+      const formatted = date.toLocaleString('en-US', options);
+      if (formatted.includes(', ')) {
+        const parts = formatted.split(', ');
+        if (parts.length >= 2) {
+          const datePart = parts[0];
+          const timePart = parts.slice(1).join(', ');
+          return `${datePart} at ${timePart} IST`;
+        }
+      }
+
+      const timeMatch = formatted.match(/(\d{1,2}:\d{2}\s*(?:AM|PM))/i);
+      if (timeMatch) {
+        const dateOnly = formatted.replace(/\d{1,2}:\d{2}\s*(?:AM|PM)/i, '').trim().replace(/,\s*$/, '');
+        return `${dateOnly} at ${timeMatch[1]} IST`;
+      }
+
+      return `${formatted} IST`;
+    } catch (error) {
+      console.error('Error formatting date:', error, blog);
+      return null;
+    }
+  };
+
   const BlogCard = ({ blog }) => {
     const previewText = getPreviewText(blog.content);
+    const formattedDate = formatDateAndTime(blog);
 
     return (
       <div
@@ -154,10 +241,16 @@ const LogBook = () => {
 
         {/* Content */}
         <div className="space-y-3 relative z-10">
-          <div className="flex items-start justify-between gap-4">
-            <h2 className="font-bold text-xl sm:text-2xl bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-transparent flex-1">
+          <div className="flex flex-col gap-2">
+            <h2 className="font-bold text-xl sm:text-2xl bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-transparent">
               {blog.title}
             </h2>
+            {formattedDate && (
+              <div className="text-xs sm:text-sm text-neutral-500 font-medium tracking-wide flex items-center gap-1.5">
+                <span className="text-neutral-600">•</span>
+                <span>{formattedDate}</span>
+              </div>
+            )}
           </div>
           <div className="relative">
             <p className="text-neutral-400 text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
@@ -179,6 +272,7 @@ const LogBook = () => {
 
   const BlogModal = ({ blog, onClose }) => {
     if (!blog) return null;
+    const formattedDate = formatDateAndTime(blog);
 
     return (
       <motion.div
@@ -227,9 +321,17 @@ const LogBook = () => {
 
                 {/* Blog content */}
                 <div className="space-y-6 pr-8">
-                  <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-transparent">
-                    {blog.title}
-                  </h1>
+                  <div className="flex flex-col gap-3">
+                    <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-transparent">
+                      {blog.title}
+                    </h1>
+                    {formattedDate && (
+                      <div className="text-sm text-neutral-500 font-medium tracking-wide flex items-center gap-2">
+                        <span className="text-neutral-600">•</span>
+                        <span>{formattedDate}</span>
+                      </div>
+                    )}
+                  </div>
                   <div className="w-full h-px bg-gradient-to-r from-transparent via-neutral-700 to-transparent" />
                   <div className="prose prose-invert max-w-none">
                     <p className="text-neutral-300 text-base sm:text-lg leading-relaxed whitespace-pre-wrap">
