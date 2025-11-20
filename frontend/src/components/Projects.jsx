@@ -34,22 +34,6 @@ const projects = [
     blurhash:"LACZ35PqnOi_T0X9a|WA00+FIpkW"
   },
   {
-    title: "To-Do App with Flask",
-    description:
-      "Flask-powered backend with persistent task management frontend.",
-    link: "https://todo-with-flask-a93d.onrender.com/",
-    image: "/Task_Master.png",
-    blurhash:"L13l5O9F4n%MD%t7t7Rj00t7_3IU"
-  },
-  {
-    title: "Temperature Converter (JS)",
-    description:
-      "Interactive converter for Celsius/Fahrenheit using plain JavaScript.",
-    link: "https://chaitanyasai-meka.github.io/Temperature_Converter_JS/code/index.html",
-    image: "/Temperature.png",
-    blurhash:"L2QT1Z3C~Xtm00%EV[R.00erD}fP"
-  },
-  {
     title: "Capstone Project (HTML/CSS)",
     description:
       "Final capstone web project showcasing HTML and CSS skills.",
@@ -86,14 +70,12 @@ const Projects = () => {
   const scrollLineRef = useRef(null);
 
   useEffect(() => {
-    // Lenis for smooth scrolling
     const lenis = new Lenis({
-      duration: 3.2, // Scroll animation duration
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function
-      smooth: true, // Enable smooth scrolling
+      duration: 3.2, 
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      smooth: true, 
     });
 
-    // frame loop for Lenis boommm
     const raf = (time) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -112,7 +94,6 @@ const Projects = () => {
       },
     });
 
-    // Cleanup on component unmount
     return () => {
       lenis.destroy();
     };
