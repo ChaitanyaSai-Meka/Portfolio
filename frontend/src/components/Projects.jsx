@@ -65,6 +65,7 @@ const projects = [
   },
 ];
 
+
 const Projects = () => {
 
   const scrollLineRef = useRef(null);
