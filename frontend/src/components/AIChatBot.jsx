@@ -80,7 +80,7 @@ const AIChatBot = () => {
           <div className="flex items-center justify-between p-4 border-b border-gray-700">
             <div className="flex items-center gap-2">
               <MessageCircle size={20} className="text-white" />
-              <span className="font-semibold text-white">AI Assistant</span>
+              <span className="font-semibold text-white">Akira</span>
             </div>
             <button
               onClick={() => setIsExpanded(false)}
