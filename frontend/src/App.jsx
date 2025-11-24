@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,8 +11,15 @@ import Footer from './components/Footer';
 import Skills from './components/Skills';
 import Logbook from './components/LogBook';
 import NotFound from './components/NotFound';
+import AIChatBot from './components/AIChatBot';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Helmet } from 'react-helmet-async';
+
+function ChatBotWrapper() {
+  const location = useLocation();
+  const showChatBot = location.pathname !== '/logbook';
+  return showChatBot ? <AIChatBot /> : null;
+}
 
 function App() {
   const [started, setStarted] = useState(false);
@@ -45,6 +52,19 @@ useEffect(() => {
   };
 
   warmUpServer();
+}, []);
+
+useEffect(() => {
+  const checkAIHealth = async () => {
+    try {
+      await fetch("https://portfolio-bot-backend.onrender.com/health");
+      console.log("AI service health check completed");
+    } catch (err) {
+      console.error("AI service health check failed:", err);
+    }
+  };
+
+  checkAIHealth();
 }, []);
 
   const handleStart = () => {
@@ -125,6 +145,7 @@ useEffect(() => {
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
+            <ChatBotWrapper />
             <SpeedInsights />
           </div>
         </Router>
