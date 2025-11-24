@@ -32,7 +32,7 @@ const AIChatBot = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMessage }),
+        body: JSON.stringify({ prompt: userMessage }),
       });
 
       if (!response.ok) {
