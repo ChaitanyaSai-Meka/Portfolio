@@ -7,7 +7,7 @@ const AIChatBot = () => {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
-  const url = "https://portfolio-bot-backend.onrender.com";
+  const url = import.meta.env.VITE_AI_SERVICE_URL;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
