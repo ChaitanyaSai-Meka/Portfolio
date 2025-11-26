@@ -34,6 +34,7 @@ const Skills = () => {
     [255, 166, 17], // Firebase - Dark Tangerine
     [240, 81, 51],  // Swift - Vivid Orange
     [36, 150, 237], // Docker - Blue
+    [42, 197, 166], // FastAPI - Teal Green
   ];
 
   const icons = [
@@ -139,6 +140,12 @@ const Skills = () => {
       alt="Docker"
       className="w-10 h-10 px-1 pb-1 object-contain"
     />,
+    <img
+      key="Fast_API_Logo"
+      src="/FastAPI.svg"
+      alt="FastAPI"
+      className="w-11 h-11 px-1 pb-1 object-contain"
+    />,
   ];
 
   const audioSources = [
@@ -164,6 +171,7 @@ const Skills = () => {
     "/b6-piano.mp3",
     "/g6-piano.mp3",
     "/d6-piano.mp3",
+    "/a6-piano.mp3",
   ];
 
   const audioRefs = useRef([]);

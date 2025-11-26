@@ -18,6 +18,13 @@ const projects = [
     blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
   },
   {
+    title: "THE-VALUT",
+    description: "Architected a RAG system to enable real-time semantic search and Q&A over private PDF documents.",
+    link: "https://the-vault-smoky.vercel.app/",
+    image: "/the-vault.png",
+     blurhash:"L1TI,a?bWA_3IVofM{%M00t7Rjxu"
+  },
+  {
     title: "Apple Website Clone",
     description:
       "A modern, animated clone of the official Apple website made with smooth scroll and transitions.",
