@@ -18,6 +18,14 @@ const projects = [
     blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
   },
   {
+    title: "Mepa",
+    description:
+      "Mepa - Metro Route Finder",
+    link: "https://mepa.vercel.app/",
+    image: "/mepa.png",
+    blurhash:"L2SF;N%M_4-;00WBRjj[00WB9Eaz"
+  },
+  {
     title: "THE-VALUT",
     description: "Architected a RAG system to enable real-time semantic search and Q&A over private PDF documents.",
     link: "https://the-vault-smoky.vercel.app/",
