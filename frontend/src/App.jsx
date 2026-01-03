@@ -57,7 +57,7 @@ useEffect(() => {
 useEffect(() => {
   const checkAIHealth = async () => {
     try {
-      await fetch("https://portfolio-bot-backend.onrender.com/health");
+      await fetch(`${process.env.VITE_AI_SERVICE_URL}/health`);
       console.log("AI service health check completed");
     } catch (err) {
       console.error("AI service health check failed:", err);
