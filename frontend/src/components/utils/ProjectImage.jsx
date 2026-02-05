@@ -19,6 +19,8 @@ const ProjectImage = ({ image, blurhash, alt }) => {
       )}
       <img
         src={image}
+        loading="lazy"
+        decoding="async"
         onLoad={() => setLoaded(true)}
         className={`absolute top-0 left-0 h-full w-full object-cover rounded-xl transition-opacity duration-500 ${
           loaded ? "opacity-100" : "opacity-0"
