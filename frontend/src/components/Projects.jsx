@@ -110,14 +110,15 @@ const Projects = () => {
       smooth: true, 
     });
 
+    let rafId;
     const raf = (time) => {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     };
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to(scrollLineRef.current, {
+    const scrollTriggerInstance = gsap.to(scrollLineRef.current, {
       width: "100%",
       ease: "none",
       scrollTrigger: {
@@ -129,6 +130,8 @@ const Projects = () => {
     });
 
     return () => {
+      cancelAnimationFrame(rafId);
+      scrollTriggerInstance.scrollTrigger?.kill();
       lenis.destroy();
     };
   }, []);
