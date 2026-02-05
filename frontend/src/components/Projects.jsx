@@ -9,11 +9,29 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import ProjectImage from "./utils/ProjectImage";
 
 const projects = [
+    {
+    title: "Akira",
+    description:
+      "Akira — A sleek voice-agent that listens, understands, and responds in real time.",
+    link: "https://akira-gray.vercel.app/",
+    code: "https://github.com/ChaitanyaSai-Meka/Akira",
+    image: "/akira_voice_agent.png",
+    blurhash:"L02~TTwJ4mbIeRtBRzf5DzWT%Pj]"
+  },
+  {
+    title: "THE-VALUT",
+    description: "Architected a RAG system to enable real-time semantic search and Q&A over private PDF documents.",
+    link: "https://the-vault-smoky.vercel.app/",
+    code: "https://github.com/ChaitanyaSai-Meka/THE-VAULT",
+    image: "/the-vault.png",
+     blurhash:"L1TI,a?bWA_3IVofM{%M00t7Rjxu"
+  },
   {
     title: "Univa",
     description:
       "UNIVA — Document Search Platform",
     link: "https://univa-ten.vercel.app/",
+    code: "https://github.com/ChaitanyaSai-Meka/UNIVA",
     image: "/univa.png",
     blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
   },
@@ -22,21 +40,16 @@ const projects = [
     description:
       "Mepa - Metro Route Finder",
     link: "https://mepa.vercel.app/",
+    code: "https://github.com/ChaitanyaSai-Meka/mepa",
     image: "/mepa.png",
     blurhash:"L2SF;N%M_4-;00WBRjj[00WB9Eaz"
-  },
-  {
-    title: "THE-VALUT",
-    description: "Architected a RAG system to enable real-time semantic search and Q&A over private PDF documents.",
-    link: "https://the-vault-smoky.vercel.app/",
-    image: "/the-vault.png",
-     blurhash:"L1TI,a?bWA_3IVofM{%M00t7Rjxu"
   },
   {
     title: "Apple Website Clone",
     description:
       "A modern, animated clone of the official Apple website made with smooth scroll and transitions.",
     link: "https://apple-website-ecru-xi.vercel.app/",
+    code: "https://github.com/ChaitanyaSai-Meka/Apple_Website",
     image: "/Apple_website.png",
     blurhash:"L02$Hd9Z00~pneofp0WB00?a~V01"
   },
@@ -44,15 +57,25 @@ const projects = [
     title: "Movies Website",
     description:
       "Movie explorer website with sleek UI and live API integration.",
-    link: "https://movies-web-project-seven.vercel.app/",
+    link: "",
+    code: "https://github.com/ChaitanyaSai-Meka/MoviesWeb_Project",
     image: "/Movies.png",
     blurhash:"LACZ35PqnOi_T0X9a|WA00+FIpkW"
+  },
+  {
+    title: "CYBERFICTION",
+    description: "Features smooth scrolling and logo animation using HTML, CSS, JS, Lenis, and GSAP. ",
+    link: "https://chaitanyasai-meka.github.io/CYBERFICTION/",
+    code: "https://github.com/ChaitanyaSai-Meka/CYBERFICTION",
+    image: "/cyberfiction.png",
+     blurhash:"LbOzMcWB_NxuR*t7RjRjogWBM{fk"
   },
   {
     title: "Capstone Project (HTML/CSS)",
     description:
       "Final capstone web project showcasing HTML and CSS skills.",
-    link: "https://chaitanyasai-meka.github.io/Capstone_Project/",
+    link: "",
+    code: "https://github.com/ChaitanyaSai-Meka/Capstone_Project",
     image: "/Capstone.png",
     blurhash:"LhLz?TRk~qoe-=azM{ay?cs.MxbH"
   },
@@ -60,21 +83,16 @@ const projects = [
     title: "Healthy Middle-Class India",
     description: "Healthy Middle-Class India: Tackles obesity and lifestyle diseases with systemic solutions.",
     link: "https://fste-chi.vercel.app",
+    code: "https://github.com/ChaitanyaSai-Meka/FSTE",
     image: "/fste.png",
     blurhash:"L1NAoU3}MZPp004N019c00UDI89H"
-  },
-  {
-    title: "CYBERFICTION",
-    description: "Features smooth scrolling and logo animation using HTML, CSS, JS, Lenis, and GSAP. ",
-    link: "https://chaitanyasai-meka.github.io/CYBERFICTION/",
-    image: "/cyberfiction.png",
-     blurhash:"LbOzMcWB_NxuR*t7RjRjogWBM{fk"
   },
   {
     title: "Coming Soon",
     description:
       "Still in the oven. Can’t wait to serve it hot!",
     link: "",
+    code: "",
     image: "/black_page.jpg",
     blurhash:"L00SvEayWAfQozfQayfQayfQf8fQ"
   },
@@ -139,7 +157,7 @@ const Projects = () => {
       {/* Section Title */}
       <div className="relative z-10 mb-12 text-center">
         <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent">
-          Things I've been building 🚀
+          Things I've been building 
         </h2>
         <p className="mt-4 text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
           Exploring ideas, solving problems, and having fun with code — here’s what I’ve built so far.
@@ -171,17 +189,35 @@ const Projects = () => {
                   alt={project.title}
                 />
               </CardItem>
-              <div className="flex justify-end items-center mt-6">
-                <CardItem
-                  translateZ={20}
-                  as="a"
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold"
-                >
-                  Live →
-                </CardItem>
+              <div className="flex justify-between items-center gap-3 mt-6">
+                {project.code ? (
+                  <CardItem
+                    translateZ={20}
+                    as="a"
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-xl border border-white/20 text-white text-xs font-bold hover:bg-white/10"
+                  >
+                    Code →
+                  </CardItem>
+                ) : null}
+                {project.link ? (
+                  <CardItem
+                    translateZ={20}
+                    as="a"
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold"
+                  >
+                    Live →
+                  </CardItem>
+                ) : project.code ? (
+                  <span className="text-[11px] text-neutral-400 text-right max-w-[220px]">
+                    Live demo offline. You can run it locally.
+                  </span>
+                ) : null}
               </div>
             </CardBody>
           </CardContainer>

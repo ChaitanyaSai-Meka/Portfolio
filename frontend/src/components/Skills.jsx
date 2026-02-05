@@ -22,7 +22,6 @@ const Skills = () => {
     [0, 105, 148],   // MySQL - Deep Blue
     [56, 189, 248],  // Tailwind-like Sky Blue
     [70, 130, 180],  // Postgresql
-    [57, 255, 20],   // Three.js - Neon Green
     [30, 41, 59],    //Next.js - Slate Blue
     [255, 0, 128],   // Framer Motion - Vibrant Pink
     [0, 199, 255],   // Figma - Vivid Cyan/Blue
@@ -35,6 +34,7 @@ const Skills = () => {
     [240, 81, 51],  // Swift - Vivid Orange
     [36, 150, 237], // Docker - Blue
     [42, 197, 166], // FastAPI - Teal Green
+    [0, 173, 216],  // Go - Brand Blue
   ];
 
   const icons = [
@@ -66,12 +66,6 @@ const Skills = () => {
       key="postgresql"
       src="/postgresql.png"
       alt="Postgresql"
-      className="w-9 h-9 p-1 object-contain"
-    />,
-    <img
-      key="three-js-logo"
-      src="/three-js-logo.png"
-      alt="three.js"
       className="w-9 h-9 p-1 object-contain"
     />,
     <img
@@ -145,6 +139,12 @@ const Skills = () => {
       src="/FastAPI.svg"
       alt="FastAPI"
       className="w-11 h-11 px-1 pb-1 object-contain"
+    />,
+    <img
+      key="GOLANG_LOGO"
+      src="/golang.png"
+      alt="GOLANG"
+      className="w-13 h-13 px-0.5 pb-0.5 object-contain"
     />,
   ];
 
