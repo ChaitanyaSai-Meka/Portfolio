@@ -82,7 +82,7 @@ const projects = [
   {
     title: "Healthy Middle-Class India",
     description: "Healthy Middle-Class India: Tackles obesity and lifestyle diseases with systemic solutions.",
-    link: "https://fste-chi.vercel.app",
+    link: "",
     code: "https://github.com/ChaitanyaSai-Meka/FSTE",
     image: "/fste.png",
     blurhash:"L1NAoU3}MZPp004N019c00UDI89H"

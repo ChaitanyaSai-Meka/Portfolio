@@ -20,6 +20,8 @@ const BlurImage = ({ src, blurhash, alt, className }) => {
       <img
         src={src}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         onLoad={() => setLoaded(true)}
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 rounded-full ${
           loaded ? "opacity-100" : "opacity-0"
