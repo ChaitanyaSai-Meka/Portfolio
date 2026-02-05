@@ -19,7 +19,7 @@ const projects = [
     blurhash:"L02~TTwJ4mbIeRtBRzf5DzWT%Pj]"
   },
   {
-    title: "THE-VALUT",
+    title: "THE-VAULT",
     description: "Architected a RAG system to enable real-time semantic search and Q&A over private PDF documents.",
     link: "https://the-vault-smoky.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/THE-VAULT",
