@@ -55,10 +55,10 @@ const Contact = () => {
 
       {/* Content */}
       <div className="relative z-20 max-w-xl w-full text-center">
-        <h1 className="bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-5xl sm:text-7xl font-extrabold text-transparent">
+        <h1 className="bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-5xl sm:text-6xl font-bold tracking-tight text-transparent">
           Connect with Me
         </h1>
-        <p className="mt-4 text-neutral-400 text-lg">Let’s chat — drop a message!</p>
+        <p className="mt-4 text-neutral-400 text-lg">Let’s chat. Drop a message!</p>
 
         <form ref={formRef} onSubmit={sendEmail} className="mt-10 space-y-4">
           <input

@@ -7,7 +7,7 @@
   align-items: center;
   height: 4rem;
   color: whitesmoke;
-  background-color: black; 
+  background-color: black;
 }
 
 #nav-div {
@@ -69,24 +69,22 @@
 .hero-content h2 {
   font-size: 2.5rem;
   font-weight: normal;
-  color: whitesmoke; 
+  color: whitesmoke;
 }
 
 .typing-text {
   font-weight: bold;
-  background: linear-gradient(
-    115deg,
-    #1f1f1f 0%,
-    #4b4b4b 30%,
-    #ffffff 50%,
-    #4b4b4b 70%,
-    #1f1f1f 100%
-  );
+  background: linear-gradient(115deg,
+      #1f1f1f 0%,
+      #4b4b4b 30%,
+      #ffffff 50%,
+      #4b4b4b 70%,
+      #1f1f1f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   background-size: 250% 100%;
-  animation: shine 2.5s ease-in-out infinite;
+  animation: shine-text 2.5s ease-in-out infinite;
 }
 
 /* SOCIAL ICONS */
@@ -124,13 +122,23 @@
 
 /* ANIMATIONS */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-@keyframes shine {
-  0% { background-position: 200% 0; }
-  100% { background-position: 0 0; }
+@keyframes shine-text {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
 }
 
 /* ABOUT SECTION PLACEHOLDER */
@@ -138,14 +146,12 @@
   font-size: 60px;
   font-weight: 750;
   text-align: center;
-  background: linear-gradient(
-    90deg,
-    #888888,
-    #bcbcbc,
-    #ffffff,
-    #bcbcbc,
-    #888888
-  );
+  background: linear-gradient(90deg,
+      #888888,
+      #bcbcbc,
+      #ffffff,
+      #bcbcbc,
+      #888888);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -159,9 +165,11 @@
   0% {
     background-position: 300% 0;
   }
+
   50% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 300% 0;
   }
@@ -177,10 +185,19 @@
 }
 
 @keyframes shine {
-  0% { background-position: 200% 0; }
-  50% { background-position: 0 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  50% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
+
 /* Enter Style ends */
 
 /* NAVBAR: Adjust gap for mobile */
@@ -210,21 +227,223 @@
 }
 
 
+/* MIGRATION BANNER */
+.migration-banner-wrapper {
+  position: relative;
+  border-radius: 14px;
+  padding: 1.5px;
+  animation: migration-fadein 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Animated gradient border */
+.migration-banner-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: conic-gradient(from var(--angle, 0deg),
+      transparent 0deg,
+      rgba(251, 191, 36, 0.7) 60deg,
+      rgba(255, 255, 255, 0.5) 120deg,
+      rgba(234, 88, 12, 0.5) 180deg,
+      transparent 240deg,
+      transparent 360deg);
+  animation: migration-border-spin 8s linear infinite;
+  z-index: 0;
+}
+
+/* Outer amber glow */
+.migration-banner-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 15px;
+  background: transparent;
+  box-shadow: 0 0 22px 3px rgba(251, 146, 60, 0.18), 0 0 60px 6px rgba(251, 191, 36, 0.07);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes migration-border-spin {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes migration-fadein {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.migration-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 13px;
+  background: #0a0a0a;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Interior shimmer sweep */
+.migration-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.045) 50%,
+      transparent 75%);
+  background-size: 220% 100%;
+  animation: migration-shimmer 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes migration-shimmer {
+  0% {
+    background-position: 220% 0;
+  }
+
+  100% {
+    background-position: -20% 0;
+  }
+}
+
+.migration-dot-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+}
+
+.migration-dot-ping {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(251, 191, 36, 0.55);
+  animation: migration-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.migration-dot-core {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fbbf24, #fb923c);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+@keyframes migration-ping {
+
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.migration-text {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: #737373;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.migration-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #fbbf24 0%, #e5e5e5 60%, #fbbf24 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 5px;
+  animation: migration-label-shine 3s ease-in-out infinite;
+}
+
+@keyframes migration-label-shine {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Reduce motion: disable all migration banner animations */
+@media (prefers-reduced-motion: reduce) {
+  .migration-banner-wrapper {
+    animation: none;
+  }
+
+  .migration-banner-wrapper::before {
+    animation: none;
+    background: none;
+  }
+
+  .migration-banner-wrapper::after {
+    box-shadow: none;
+  }
+
+  .migration-banner::before {
+    animation: none;
+  }
+
+  .migration-dot-ping {
+    animation: none;
+  }
+
+  .migration-label {
+    animation: none;
+    background-position: 0 0;
+  }
+}
+
 /* GLOBAL STYLES */
-html, body {
+html,
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: black;
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  color: whitesmoke; 
+  color: whitesmoke;
 }
 
-/* For hiding scroll bar*/
+/* For hiding scroll bar */
 html::-webkit-scrollbar {
   display: none;
 }
-html {
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For IE and Edge */
-}
 
+html {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
