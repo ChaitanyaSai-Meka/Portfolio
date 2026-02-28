@@ -84,7 +84,7 @@
   background-clip: text;
   color: transparent;
   background-size: 250% 100%;
-  animation: shine 2.5s ease-in-out infinite;
+  animation: shine-text 2.5s ease-in-out infinite;
 }
 
 /* SOCIAL ICONS */
@@ -131,7 +131,7 @@
   }
 }
 
-@keyframes shine {
+@keyframes shine-text {
   0% {
     background-position: 200% 0;
   }
@@ -396,6 +396,35 @@
   }
 }
 
+/* Reduce motion: disable all migration banner animations */
+@media (prefers-reduced-motion: reduce) {
+  .migration-banner-wrapper {
+    animation: none;
+  }
+
+  .migration-banner-wrapper::before {
+    animation: none;
+    background: none;
+  }
+
+  .migration-banner-wrapper::after {
+    box-shadow: none;
+  }
+
+  .migration-banner::before {
+    animation: none;
+  }
+
+  .migration-dot-ping {
+    animation: none;
+  }
+
+  .migration-label {
+    animation: none;
+    background-position: 0 0;
+  }
+}
+
 /* GLOBAL STYLES */
 html,
 body {
@@ -407,14 +436,14 @@ body {
   color: whitesmoke;
 }
 
-/* For hiding scroll bar*/
+/* For hiding scroll bar */
 html::-webkit-scrollbar {
   display: none;
 }
 
 html {
   scrollbar-width: none;
-  /* For Firefox */
+  /* Firefox */
   -ms-overflow-style: none;
-  /* For IE and Edge */
+  /* IE and Edge */
 }
