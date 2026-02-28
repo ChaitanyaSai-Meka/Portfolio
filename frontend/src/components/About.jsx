@@ -48,20 +48,18 @@ const About = () => {
 
         {/* Text Content */}
         <div className="text-left text-neutral-300 max-w-2xl ml-8 md:ml-16">
-          <h1 className="text-4xl sm:text-7xl font-bold bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent py-8">
+          <h1 className="text-4xl sm:text-7xl font-bold tracking-tight bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent py-8">
             About Me.
           </h1>
           <p className="text-lg leading-relaxed mb-4">
-            I’m Chaitanya Sai Meka, a passionate and driven developer with a strong foundation in software engineering and a keen interest in building impactful digital solutions. I thrive at the intersection of technology and creativity, with hands-on experience in full-stack development, UI/UX design, and collaborative team projects.
+            I’m Chaitanya Sai Meka. I build backend systems, ship full-stack products, and spend a lot of time thinking about how software scales. Most recently, I interned at Vizal AI where I led the backend for Kivo, a client AI platform, designing PostgreSQL pipelines, engineering async scrapers that cut batch processing time by 75%, and co-architecting microservices for their Kriya product.
           </p>
           <p className="text-lg leading-relaxed mb-4">
-            Currently pursuing my academic journey while actively working on personal and open-source projects, I continuously seek opportunities to learn and grow in real-world environments. I have a strong grasp of modern web technologies, especially React, and I enjoy solving complex problems with clean, efficient code.
+            My stack runs deep on both ends. I'm fluent in Python, TypeScript, JavaScript, and SQL, and I work regularly with Node.js, FastAPI, React, Next.js, and React Native. I've built RAG pipelines with LangChain and Supabase achieving sub-100ms AI inference, freelanced on a full-stack React Native product while leading a three-person team end-to-end, and I carry a LeetCode rating of 1635+ with 400+ problems solved.
           </p>
-          <p className="text-lg leading-relaxed mb-4">
-            I'm also exploring the early stages of a tech startup idea called <strong>Xeon</strong>, where I'm experimenting with innovative solutions and learning to translate abstract ideas into structured plans. This journey is helping me build my entrepreneurial mindset and sharpen my skills in product thinking, strategy, and leadership—even as the concept evolves through ideation and feedback.
-          </p>
+
           <p className="text-lg leading-relaxed">
-            My goal is to work on challenging projects, learn from experienced mentors, and make meaningful contributions to the tech community.
+            Outside of shipping code, I was the R&D Lead at my college's Space Club and I'm a core member of the Cybersecurity Club. I care about systems that hold up in production, code that someone else can maintain, and interfaces that people actually enjoy using.
           </p>
         </div>
       </div>

@@ -159,12 +159,28 @@ const Projects = () => {
 
       {/* Section Title */}
       <div className="relative z-10 mb-12 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent">
           Things I've been building 
         </h2>
         <p className="mt-4 text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
-          Exploring ideas, solving problems, and having fun with code — here’s what I’ve built so far.
+          A collection of things I've built, experiments I've run, and problems I've enjoyed solving.
         </p>
+
+        {/* Migration Notice Banner */}
+        <div className="mt-8 mx-auto max-w-xl">
+          <div className="migration-banner-wrapper">
+          <div className="migration-banner">
+            <span className="migration-dot-wrapper">
+              <span className="migration-dot-ping" />
+              <span className="migration-dot-core" />
+            </span>
+            <p className="migration-text">
+              <span className="migration-label">Backend Migration in Progress</span>
+              A few live demos are temporarily offline while I shift the backend from GCP to AWS. Code is still fully accessible on GitHub.
+            </p>
+          </div>
+          </div>
+        </div>
       </div>
 
       {/* Project Cards */}
