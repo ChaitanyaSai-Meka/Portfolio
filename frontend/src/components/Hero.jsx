@@ -116,6 +116,13 @@ const Hero = () => {
               <SiCodeforces />
             </a>
           </div>
+          <a
+            href="/resume.pdf"
+            download="Chaitanya_Sai_Meka_Resume.pdf"
+            className="mt-8 inline-block shadow-[0_0_0_3px_#000000_inset] px-6.5 py-1 bg-transparent border border-black/70 dark:border-white/70 dark:text-white/80 text-black/50 rounded-lg font-bold transform hover:-translate-y-1 transition duration-450"
+          >
+            Resume
+          </a>
         </div>
       </div>
     </>
