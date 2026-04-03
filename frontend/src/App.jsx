@@ -13,6 +13,7 @@ import Logbook from './components/LogBook';
 import NotFound from './components/NotFound';
 import AIChatBot from './components/AIChatBot';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from "@vercel/analytics/next"
 import { Helmet } from 'react-helmet-async';
 
 function ChatBotWrapper() {
@@ -147,6 +148,7 @@ useEffect(() => {
             <Footer />
             <ChatBotWrapper />
             <SpeedInsights />
+            <Analytics />
           </div>
         </Router>
       )}
