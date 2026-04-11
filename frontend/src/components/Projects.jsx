@@ -39,7 +39,7 @@ const projects = [
     title: "Mepa",
     description:
       "Mepa - Metro Route Finder",
-    link: "https://mepa.vercel.app/",
+    link: "",
     code: "https://github.com/ChaitanyaSai-Meka/mepa",
     image: "/mepa.png",
     blurhash:"L2SF;N%M_4-;00WBRjj[00WB9Eaz"
