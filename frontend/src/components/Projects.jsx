@@ -10,6 +10,16 @@ import ProjectImage from "./utils/ProjectImage";
 
 const projects = [
     {
+    title: "Devledger",
+    description:
+      "Local-first CLI for splitting shared dev infra costs.",
+    link: "https://github.com/ChaitanyaSai-Meka/devledger#readme",
+    linkLabel: "README →",
+    code: "https://github.com/ChaitanyaSai-Meka/devledger.git",
+    image: "/devledger.png",
+    blurhash:"L56b13~q%LWBNaNaS2bbIoWVoffk"
+  },
+    {
     title: "Akira",
     description:
       "Akira — A sleek voice-agent that listens, understands, and responds in real time.",
@@ -54,6 +64,14 @@ const projects = [
     blurhash:"L02$Hd9Z00~pneofp0WB00?a~V01"
   },
   {
+    title: "CYBERFICTION",
+    description: "Features smooth scrolling and logo animation using HTML, CSS, JS, Lenis, and GSAP. ",
+    link: "https://chaitanyasai-meka.github.io/CYBERFICTION/",
+    code: "https://github.com/ChaitanyaSai-Meka/CYBERFICTION",
+    image: "/cyberfiction.png",
+     blurhash:"LbOzMcWB_NxuR*t7RjRjogWBM{fk"
+  },
+  {
     title: "Movies Website",
     description:
       "Movie explorer website with sleek UI and live API integration.",
@@ -61,14 +79,6 @@ const projects = [
     code: "https://github.com/ChaitanyaSai-Meka/MoviesWeb_Project",
     image: "/Movies.png",
     blurhash:"LACZ35PqnOi_T0X9a|WA00+FIpkW"
-  },
-  {
-    title: "CYBERFICTION",
-    description: "Features smooth scrolling and logo animation using HTML, CSS, JS, Lenis, and GSAP. ",
-    link: "https://chaitanyasai-meka.github.io/CYBERFICTION/",
-    code: "https://github.com/ChaitanyaSai-Meka/CYBERFICTION",
-    image: "/cyberfiction.png",
-     blurhash:"LbOzMcWB_NxuR*t7RjRjogWBM{fk"
   },
   {
     title: "Capstone Project (HTML/CSS)",
@@ -230,7 +240,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold"
                   >
-                    Live →
+                    {project.linkLabel || "Live →"}
                   </CardItem>
                 ) : project.code ? (
                   <span className="text-[11px] text-neutral-400 text-right max-w-[220px]">
