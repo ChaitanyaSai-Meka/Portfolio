@@ -1,7 +1,7 @@
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { SiLeetcode, SiCodeforces } from "react-icons/si";
+import { SiLeetcode, SiCodeforces, SiX } from "react-icons/si";
 import { cn } from "../lib/utils";
 import { DrawLineText } from "./ui/draw_line_text";
 
@@ -98,6 +98,14 @@ const Hero = () => {
               className="icon-circle hover:text-blue-600 transition"
             >
               <FaLinkedin />
+            </a>
+            <a
+              href="https://x.com/IAMCHAITANYASAI"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon-circle hover:text-neutral-400 transition-colors"
+            >
+              <SiX />
             </a>
             <a
               href="https://leetcode.com/u/chaitanyasai_meka/"
