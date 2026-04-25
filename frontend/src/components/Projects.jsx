@@ -22,7 +22,7 @@ const projects = [
     {
     title: "Akira",
     description:
-      "Akira — A sleek voice-agent that listens, understands, and responds in real time.",
+      "A sleek voice-agent that listens, understands, and responds in real time.",
     link: "https://akira-gray.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/Akira",
     image: "/akira_voice_agent.png",
@@ -39,20 +39,11 @@ const projects = [
   {
     title: "Univa",
     description:
-      "UNIVA — Document Search Platform",
+      "A Document Search Platform leveraging vector databases and LLMs for semantic search and Q&A over PDFs.",
     link: "https://univa-ten.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/UNIVA",
     image: "/univa.png",
     blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
-  },
-  {
-    title: "Mepa",
-    description:
-      "Mepa - Metro Route Finder",
-    link: "",
-    code: "https://github.com/ChaitanyaSai-Meka/mepa",
-    image: "/mepa.png",
-    blurhash:"L2SF;N%M_4-;00WBRjj[00WB9Eaz"
   },
   {
     title: "Apple Website Clone",
@@ -70,6 +61,15 @@ const projects = [
     code: "https://github.com/ChaitanyaSai-Meka/CYBERFICTION",
     image: "/cyberfiction.png",
      blurhash:"LbOzMcWB_NxuR*t7RjRjogWBM{fk"
+  },
+  {
+    title: "Mepa",
+    description:
+      "Metro Route Finder web app with route optimization, and user-friendly interface.",
+    link: "",
+    code: "https://github.com/ChaitanyaSai-Meka/mepa",
+    image: "/mepa.png",
+    blurhash:"L2SF;N%M_4-;00WBRjj[00WB9Eaz"
   },
   {
     title: "Movies Website",
@@ -98,13 +98,14 @@ const projects = [
     blurhash:"L1NAoU3}MZPp004N019c00UDI89H"
   },
   {
-    title: "Coming Soon",
+    title: "RamForze",
     description:
-      "Still in the oven. Can’t wait to serve it hot!",
+      "Local distributed task dispatcher for macOS that turns idle machines into LAN compute nodes.",
     link: "",
-    code: "",
+    code: "https://github.com/ChaitanyaSai-Meka/RamForze",
     image: "/black_page.jpg",
-    blurhash:"L00SvEayWAfQozfQayfQayfQf8fQ"
+    blurhash:"L00SvEayWAfQozfQayfQayfQf8fQ",
+    status: "In Progress"
   },
 ];
 
@@ -112,6 +113,30 @@ const projects = [
 const Projects = () => {
 
   const scrollLineRef = useRef(null);
+
+  const getProjectBadge = (project) => {
+    if (project.status === "In Progress") {
+      return {
+        label: "In Progress",
+        className:
+          "border-amber-500/30 bg-amber-500/10 text-amber-300",
+      };
+    }
+
+    if (project.link) {
+      return {
+        label: "ONLINE",
+        className:
+          "border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
+      };
+    }
+
+    return {
+      label: "Offline",
+      className:
+        "border-rose-500/30 bg-rose-500/10 text-rose-300",
+    };
+  };
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -175,82 +200,81 @@ const Projects = () => {
         <p className="mt-4 text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
           A collection of things I've built, experiments I've run, and problems I've enjoyed solving.
         </p>
-
-        {/* Migration Notice Banner */}
-        <div className="mt-8 mx-auto max-w-xl">
-          <div className="migration-banner-wrapper">
-          <div className="migration-banner">
-            <span className="migration-dot-wrapper">
-              <span className="migration-dot-ping" />
-              <span className="migration-dot-core" />
-            </span>
-            <p className="migration-text">
-              <span className="migration-label">Backend Migration in Progress</span>
-              A few live demos are temporarily offline while I shift the backend from GCP to AWS. Code is still fully accessible on GitHub.
-            </p>
-          </div>
-          </div>
-        </div>
       </div>
 
       {/* Project Cards */}
       <div className="relative z-10 flex flex-wrap justify-center gap-8">
-        {projects.map((project, index) => (
-          <CardContainer key={index} className="inter-var">
-            <CardBody className="bg-black relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] border-white/[0.2] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-              <CardItem
-                translateZ="50"
-                className="text-xl font-bold text-white"
-              >
-                {project.title}
-              </CardItem>
-              <CardItem
-                as="p"
-                translateZ="60"
-                className="text-neutral-300 text-sm max-w-sm mt-2"
-              >
-                {project.description}
-              </CardItem>
-              <CardItem translateZ="100" className="w-full mt-4">
-                <ProjectImage
-                  image={project.image}
-                  blurhash={project.blurhash}
-                  alt={project.title}
-                />
-              </CardItem>
-              <div className="flex justify-between items-center gap-3 mt-6">
-                {project.code ? (
-                  <CardItem
-                    translateZ={20}
-                    as="a"
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-xl border border-white/20 text-white text-xs font-bold hover:bg-white/10"
-                  >
-                    Code →
-                  </CardItem>
-                ) : null}
-                {project.link ? (
-                  <CardItem
-                    translateZ={20}
-                    as="a"
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold"
-                  >
-                    {project.linkLabel || "Live →"}
-                  </CardItem>
-                ) : project.code ? (
-                  <span className="text-[11px] text-neutral-400 text-right max-w-[220px]">
-                    Live demo offline. You can run it locally.
-                  </span>
-                ) : null}
-              </div>
-            </CardBody>
-          </CardContainer>
-        ))}
+        {projects.map((project, index) => {
+          const badge = getProjectBadge(project);
+
+          return (
+            <CardContainer key={index} className="inter-var">
+              <CardBody className="bg-black relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] border-white/[0.2] w-auto sm:w-[31rem] h-auto rounded-xl p-6 border">
+                <CardItem
+                  translateZ="50"
+                  className="min-h-[5.75rem] text-xl font-bold text-white"
+                >
+                  <div className="mb-3">
+                    <span
+                      className={cn(
+                        "inline-flex items-center gap-2 rounded-md border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]",
+                        badge.className
+                      )}
+                    >
+                      <span className="h-2 w-2 rounded-full bg-current" />
+                      {badge.label}
+                    </span>
+                  </div>
+                  <span className="block">{project.title}</span>
+                </CardItem>
+                <CardItem
+                  as="p"
+                  translateZ="60"
+                  className="text-neutral-300 text-sm max-w-sm mt-2"
+                >
+                  {project.description}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4">
+                  <ProjectImage
+                    image={project.image}
+                    blurhash={project.blurhash}
+                    alt={project.title}
+                  />
+                </CardItem>
+                <div className="flex justify-between items-center gap-3 mt-6">
+                  {project.code ? (
+                    <CardItem
+                      translateZ={20}
+                      as="a"
+                      href={project.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 rounded-xl border border-white/20 text-white text-xs font-bold hover:bg-white/10"
+                    >
+                      Code →
+                    </CardItem>
+                  ) : null}
+                  {project.link ? (
+                    <CardItem
+                      translateZ={20}
+                      as="a"
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold"
+                    >
+                      {project.linkLabel || "Live →"}
+                    </CardItem>
+                  ) : project.code ? (
+                    <span className="text-[11px] text-neutral-400 text-right max-w-[220px]">
+                      Live demo offline. You can run it locally.
+                    </span>
+                  ) : null}
+                </div>
+              </CardBody>
+            </CardContainer>
+          );
+        })}
       </div>
       <div>
       <a 
