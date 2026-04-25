@@ -118,23 +118,20 @@ const Projects = () => {
     if (project.status === "In Progress") {
       return {
         label: "In Progress",
-        className:
-          "border-amber-500/30 bg-amber-500/10 text-amber-300",
+        dotClassName: "bg-amber-400",
       };
     }
 
     if (project.link) {
       return {
         label: "ONLINE",
-        className:
-          "border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
+        dotClassName: "bg-emerald-400",
       };
     }
 
     return {
       label: "Offline",
-      className:
-        "border-rose-500/30 bg-rose-500/10 text-rose-300",
+      dotClassName: "bg-rose-400",
     };
   };
 
@@ -217,11 +214,10 @@ const Projects = () => {
                   <div className="mb-3">
                     <span
                       className={cn(
-                        "inline-flex items-center gap-2 rounded-md border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]",
-                        badge.className
+                        "inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/[0.03] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-200"
                       )}
                     >
-                      <span className="h-2 w-2 rounded-full bg-current" />
+                      <span className={cn("h-2 w-2 rounded-full", badge.dotClassName)} />
                       {badge.label}
                     </span>
                   </div>
