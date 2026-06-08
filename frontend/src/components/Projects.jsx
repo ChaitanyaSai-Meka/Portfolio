@@ -19,7 +19,16 @@ const projects = [
     image: "/devledger.png",
     blurhash:"L56b13~q%LWBNaNaS2bbIoWVoffk"
   },
-    {
+  {
+    title: "Univa",
+    description:
+    "A Document Search Platform leveraging vector databases and LLMs for semantic search and Q&A over PDFs.",
+    link: "https://univa-ten.vercel.app/",
+    code: "https://github.com/ChaitanyaSai-Meka/UNIVA",
+    image: "/univa.png",
+    blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
+  },
+  {
     title: "Akira",
     description:
       "A sleek voice-agent that listens, understands, and responds in real time.",
@@ -29,21 +38,21 @@ const projects = [
     blurhash:"L02~TTwJ4mbIeRtBRzf5DzWT%Pj]"
   },
   {
+    title: "Credit Risk System",
+    description:
+    "An end-to-end predictive analytics and autonomous AI agent for credit risk assessment.",
+    link: "https://credit-risk-system6.streamlit.app/",
+    code: "https://github.com/Dhanvin1520/Credit_Risk_RAGSystem",
+    image: "/credit_risk.png",
+    blurhash:"LCQJl=?X~p-;^^IXIWV@-MN2IVfk"
+  },
+  {
     title: "THE-VAULT",
     description: "Architected a RAG system to enable real-time semantic search and Q&A over private PDF documents.",
     link: "https://the-vault-smoky.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/THE-VAULT",
     image: "/the-vault.png",
      blurhash:"L1TI,a?bWA_3IVofM{%M00t7Rjxu"
-  },
-  {
-    title: "Univa",
-    description:
-      "A Document Search Platform leveraging vector databases and LLMs for semantic search and Q&A over PDFs.",
-    link: "https://univa-ten.vercel.app/",
-    code: "https://github.com/ChaitanyaSai-Meka/UNIVA",
-    image: "/univa.png",
-    blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
   },
   {
     title: "Apple Website Clone",
