@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 
 const AIChatBot = () => {
@@ -17,40 +17,71 @@ const AIChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
+  const showSources = useCallback((sources) => {
+    console.log('Sources:', sources);
+  }, []);
+
   const handleSendMessage = async () => {
     if (!inputValue.trim() || isLoading) return;
 
     const userMessage = inputValue.trim();
     setInputValue('');
-    
+
+    const history = messages.map(({ role, content }) => ({ role, content }));
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setIsLoading(true);
 
+    setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
+
     try {
-      const response = await fetch(`${url}/chat`, {
+      const res = await fetch(`${url}/chat`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: userMessage }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: userMessage, history }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to get response');
-      }
+      if (!res.ok) throw new Error('Failed to get response');
 
-      const data = await response.json();
-      
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: data.response || data.message || 'Sorry, I could not process that.'
-      }]);
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const lines = decoder.decode(value).split('\n\n');
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+
+          const raw = line.slice(6);
+          if (raw === '[DONE]') return;
+
+          const data = JSON.parse(raw);
+          if (data.sources) showSources(data.sources);
+          if (data.token) {
+            setMessages(prev => {
+              const updated = [...prev];
+              const last = updated[updated.length - 1];
+              updated[updated.length - 1] = {
+                ...last,
+                content: last.content + data.token,
+              };
+              return updated;
+            });
+          }
+        }
+      }
     } catch (error) {
       console.error('Chat error:', error);
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: 'Sorry, I am having trouble connecting. Please try again later.'
-      }]);
+      setMessages(prev => {
+        const updated = [...prev];
+        updated[updated.length - 1] = {
+          role: 'assistant',
+          content: 'Sorry, I am having trouble connecting. Please try again later.',
+        };
+        return updated;
+      });
     } finally {
       setIsLoading(false);
     }
