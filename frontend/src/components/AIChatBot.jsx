@@ -130,6 +130,7 @@ const AIChatBot = () => {
               </div>
             )}
             {messages.map((msg, index) => (
+              msg.role === 'assistant' && msg.content === '' ? null : (
               <div
                 key={index}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
@@ -144,8 +145,9 @@ const AIChatBot = () => {
                   <p className="text-sm whitespace-pre-wrap break-words">{msg.content}</p>
                 </div>
               </div>
+              )
             ))}
-            {isLoading && (
+            {isLoading && messages[messages.length - 1]?.content === '' && (
               <div className="flex justify-start">
                 <div className="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg">
                   <div className="flex gap-1">
