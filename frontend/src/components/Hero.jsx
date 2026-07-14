@@ -28,7 +28,7 @@ const Hero = () => {
                          text-5xl sm:text-6xl md:text-6xl lg:text-[71px]"
               style={{ lineHeight: 1 }}
             >
-              Hi! Myself
+              Hi, I'm
             </span>
             <DrawLineText
               fontSize={{

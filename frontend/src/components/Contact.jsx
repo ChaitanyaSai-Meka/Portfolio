@@ -71,9 +71,8 @@ const Contact = () => {
           <input
             type="email"
             name="email"
-            placeholder="Email (must be Gmail)"
+            placeholder="Email"
             required
-            pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
             className="w-full rounded-md bg-black/40 px-4 py-2 text-white placeholder-neutral-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-white/20"
           />
           <textarea
