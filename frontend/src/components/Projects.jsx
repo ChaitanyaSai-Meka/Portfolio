@@ -20,6 +20,15 @@ const projects = [
     blurhash:"L56b13~q%LWBNaNaS2bbIoWVoffk"
   },
   {
+    title: "EdgeBeat",
+    description:
+    "A native macOS music visualizer that turns your screen edges into a beat-synced, album-colored ambient light.",
+    link: "https://edgebeat.vercel.app/",
+    code: "https://github.com/ChaitanyaSai-Meka/EdgeBeat",
+    image: "/edge_beat.png",
+    blurhash:"L12~P;xu00D%j]RjRjxu00WB~qxu"
+  },
+  {
     title: "Univa",
     description:
     "A Document Search Platform leveraging vector databases and LLMs for semantic search and Q&A over PDFs.",
