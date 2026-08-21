@@ -11,65 +11,37 @@ import {
 import { SiTypescript } from "react-icons/si";
 
 const Skills = () => {
-  const colors = [
-    [0, 173, 216],   // Go - Brand Blue
-    [242, 101, 34],  // Java - Logo Orange
-    [53, 114, 165],  // Python - Blue
-    [36, 150, 237],  // Docker - Blue
-    [70, 130, 180],  // PostgreSQL
-    [0, 105, 148],   // MySQL - Deep Blue
-    [104, 160, 99],  // Node.js - Medium Green
-    [51, 51, 51],    // Express.js - Dark Gray
-    [42, 197, 166],  // FastAPI - Teal Green
-    [255, 136, 0],   // Postman - Bright Orange
-    [56, 189, 248],  // Tailwind - Sky Blue
-    [255, 166, 17],  // Firebase - Dark Tangerine
-    [0, 199, 255],   // Redis / Kafka placeholder - Cyan
-    [138, 43, 226],  // Purple
-    [147, 112, 219], // Light Purple
-    [186, 85, 211],  // Medium Purple
-    [153, 50, 204],  // Dark Purple
-    [218, 112, 214], // Orchid
-    [221, 160, 221], // Plum
-    [255, 0, 128],   // Framer Motion - Vibrant Pink
-    [30, 41, 59],    // Next.js - Slate Blue
-    [0, 201, 167],   // React Native - Bright Teal
-    [240, 81, 51],   // Swift - Vivid Orange
-  ];
-  
-  const icons = [
+  const skills = [
     // --- Core language ---
-    <img key="GOLANG_LOGO" src="/golang.png" alt="GOLANG" className="w-13 h-13 px-0.5 pb-0.5 object-contain" />,
-    <img key="Java_Logo" src="/Java_Logo.png" alt="Java" className="w-13 h-14 px-1 pb-1 object-contain" />,
-    <FaPython key="python" className="text-white text-xl" />,
+    { key: "GOLANG_LOGO", color: "#00ADD8", icon: <img src="/golang.png" alt="GOLANG" className="w-13 h-13 px-0.5 pb-0.5 object-contain" /> },
+    { key: "Java_Logo", color: "#ED8B00", icon: <img src="/Java_Logo.png" alt="Java" className="w-13 h-14 px-1 pb-1 object-contain" /> },
+    { key: "python", color: "#3776AB", icon: <FaPython className="text-xl" /> },
 
     // --- Infra / DevOps ---
-    <img key="Docker_Logo" src="/docker_logo.png" alt="Docker" className="w-10 h-10 px-1 pb-1 object-contain" />,
-    <img key="postgresql" src="/postgresql.png" alt="Postgresql" className="w-9 h-9 p-1 object-contain" />,
-    <img key="MySQL" src="/mysql_logo.png" alt="Mysql" className="w-15 h-15 p-1 object-contain" />,
+    { key: "Docker_Logo", color: "#2496ED", icon: <img src="/docker_logo.png" alt="Docker" className="w-10 h-10 px-1 pb-1 object-contain" /> },
+    { key: "postgresql", color: "#4169E1", icon: <img src="/postgresql.png" alt="Postgresql" className="w-9 h-9 p-1 object-contain" /> },
+    { key: "MySQL", color: "#00758F", icon: <img src="/mysql_logo.png" alt="Mysql" className="w-15 h-15 p-1 object-contain" /> },
 
     // --- Backend frameworks ---
-    <img key="NodeJS_logo" src="/NodeJS_Logo.png" alt="NodeJS" className="w-13 h-12 p-1 object-contain" />,
-    <img key="ExpressJS_logo" src="/ExpressJS_Logo.png" alt="ExpressJS" className="w-16 h-11 p-1 object-contain" />,
-    <img key="Fast_API_Logo" src="/FastAPI.svg" alt="FastAPI" className="w-11 h-11 px-1 pb-1 object-contain" />,
-    <img key="Postman_Logo" src="/Postman_Logo.png" alt="Postman" className="w-15 h-15 p-1 object-contain" />,
+    { key: "NodeJS_logo", color: "#339933", icon: <img src="/NodeJS_Logo.png" alt="NodeJS" className="w-13 h-12 p-1 object-contain" /> },
+    { key: "ExpressJS_logo", color: "#EDEDED", icon: <img src="/ExpressJS_Logo.png" alt="ExpressJS" className="w-16 h-11 p-1 object-contain" /> },
+    { key: "Fast_API_Logo", color: "#009688", icon: <img src="/FastAPI.svg" alt="FastAPI" className="w-11 h-11 px-1 pb-1 object-contain" /> },
+    { key: "Postman_Logo", color: "#FF6C37", icon: <img src="/Postman_Logo.png" alt="Postman" className="w-15 h-15 p-1 object-contain" /> },
 
     // --- Fullstack / Frontend ---
-    <img key="tailwind" src="/tailwind.png" alt="Tailwind" className="w-9 h-9 p-1 object-contain" />,
-    <img key="Firebase_Logo" src="/firebase_logo.png" alt="Firebase" className="w-11 h-12 px-1 pb-1 object-contain" />,
-    <FaReact key="react" className="text-white text-xl" />,
-    <FaJs key="js" className="text-white text-xl" />,
-    <SiTypescript key="ts" className="text-white text-xl" />,
-    <img key="next-js-logo" src="/next.png" alt="Next.js" className="w-15 h-15 p-1 object-contain" />,
-    <img key="motion_logo" src="/motion_logo().png" alt="motion" className="w-15 h-15 p-1 object-contain" />,
+    { key: "tailwind", color: "#06B6D4", icon: <img src="/tailwind.png" alt="Tailwind" className="w-9 h-9 p-1 object-contain" /> },
+    { key: "react", color: "#61DAFB", icon: <FaReact className="text-xl" /> },
+    { key: "js", color: "#F7DF1E", icon: <FaJs className="text-xl" /> },
+    { key: "ts", color: "#3178C6", icon: <SiTypescript className="text-xl" /> },
+    { key: "next-js-logo", color: "#F5F5F5", icon: <img src="/next.png" alt="Next.js" className="w-15 h-15 p-1 object-contain" /> },
+    { key: "motion_logo", color: "#F24E1E", icon: <img src="/motion_logo().png" alt="motion" className="w-15 h-15 p-1 object-contain" /> },
 
     // --- Other ---
-    <FaHtml5 key="html" className="text-white text-xl" />,
-    <FaCss3Alt key="css" className="text-white text-xl" />,
-    <img key="gsap" src="/Gsap.png" alt="Gsap" className="w-9 h-9 p-1 object-contain" />,
-    <img key="figma_logo" src="/figma_logo.png" alt="figma" className="w-13 h-12 p-1 object-contain" />,
-    <img key="React_Native_Logo" src="/react_native_logo.png" alt="React_Native" className="w-11 h-12 px-1 pb-1 object-contain" />,
-    <img key="Swift_Logo" src="/swift_logo.png" alt="Swift" className="w-10 h-10 px-1 pb-1 object-contain" />,
+    { key: "html", color: "#E34F26", icon: <FaHtml5 className="text-xl" /> },
+    { key: "css", color: "#1572B6", icon: <FaCss3Alt className="text-xl" /> },
+    { key: "gsap", color: "#88CE02", icon: <img src="/Gsap.png" alt="Gsap" className="w-9 h-9 p-1 object-contain" /> },
+    { key: "figma_logo", color: "#F24E1E", icon: <img src="/figma_logo.png" alt="figma" className="w-13 h-12 p-1 object-contain" /> },
+    { key: "React_Native_Logo", color: "#61DAFB", icon: <img src="/react_native_logo.png" alt="React_Native" className="w-11 h-12 px-1 pb-1 object-contain" /> },
   ];
 
   const audioSources = [
@@ -141,15 +113,15 @@ const Skills = () => {
 
       {/* Icon Cards */}
       <div className="relative z-20 flex justify-center gap-3 flex-wrap max-w-5xl w-full">
-      {icons.map((icon, index) => (
+      {skills.map(({ key, icon, color }, index) => (
         <CardSpotlight
-          key={index}
+          key={key}
           className="h-18 w-18 rounded-full flex items-center justify-center bg-black"
-          color={`rgb(${colors[index][0]}, ${colors[index][1]}, ${colors[index][2]})`}
+          color={color}
           onMouseEnter={() => handleMouseEnter(index)}
           onClick={() => handleMouseEnter(index)}
         >
-          <div className="relative z-20">
+          <div className="relative z-20" style={{ color }}>
             {icon}
           </div>
         </CardSpotlight>

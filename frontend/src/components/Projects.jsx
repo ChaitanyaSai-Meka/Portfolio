@@ -38,15 +38,6 @@ const projects = [
     blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
   },
   {
-    title: "Akira",
-    description:
-      "A sleek voice-agent that listens, understands, and responds in real time.",
-    link: "https://akira-gray.vercel.app/",
-    code: "https://github.com/ChaitanyaSai-Meka/Akira",
-    image: "/akira_voice_agent.png",
-    blurhash:"L02~TTwJ4mbIeRtBRzf5DzWT%Pj]"
-  },
-  {
     title: "Credit Risk System",
     description:
     "An end-to-end predictive analytics and autonomous AI agent for credit risk assessment.",
@@ -61,12 +52,12 @@ const projects = [
     link: "https://the-vault-smoky.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/THE-VAULT",
     image: "/the-vault.png",
-     blurhash:"L1TI,a?bWA_3IVofM{%M00t7Rjxu"
+    blurhash:"L1TI,a?bWA_3IVofM{%M00t7Rjxu"
   },
   {
     title: "Apple Website Clone",
     description:
-      "A modern, animated clone of the official Apple website made with smooth scroll and transitions.",
+    "A modern, animated clone of the official Apple website made with smooth scroll and transitions.",
     link: "https://apple-website-ecru-xi.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/Apple_Website",
     image: "/Apple_website.png",
@@ -78,7 +69,16 @@ const projects = [
     link: "https://chaitanyasai-meka.github.io/CYBERFICTION/",
     code: "https://github.com/ChaitanyaSai-Meka/CYBERFICTION",
     image: "/cyberfiction.png",
-     blurhash:"LbOzMcWB_NxuR*t7RjRjogWBM{fk"
+    blurhash:"LbOzMcWB_NxuR*t7RjRjogWBM{fk"
+  },
+  {
+    title: "Akira",
+    description:
+      "A sleek voice-agent that listens, understands, and responds in real time.",
+    link: "",
+    code: "https://github.com/ChaitanyaSai-Meka/Akira",
+    image: "/akira_voice_agent.png",
+    blurhash:"L02~TTwJ4mbIeRtBRzf5DzWT%Pj]"
   },
   {
     title: "Mepa",
