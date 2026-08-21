@@ -41,7 +41,7 @@ const About = () => {
         <BlurImage
           src="/profile_pic.png"
           blurhash="LAB._mEN5SkC-TNdofWX0hay}=WC"
-          alt="Profile"
+          alt="Chaitanya Sai Meka, Computer Science and AI student"
           className="w-full h-full"
         />
         </div>
@@ -52,14 +52,14 @@ const About = () => {
             About Me.
           </h1>
           <p className="text-lg leading-relaxed mb-4">
-            I’m Chaitanya Sai Meka. I build backend systems, ship full-stack products, and spend a lot of time thinking about how software scales. Most recently, I interned at Vizal AI where I led the backend for Kivo, a client AI platform, designing PostgreSQL pipelines, engineering async scrapers that cut batch processing time by 75%, and co-architecting microservices for their Kriya product.
+            I’m Chaitanya Sai Meka, a Computer Science and AI student focused on backend engineering, distributed systems, and data-heavy products. During my Software Engineer internship at Vizal AI, I independently architected Kriya’s backend in FastAPI and built the PostgreSQL pipelines and async data collectors powering Kivo Money’s GenAI platform, cutting batch processing time by 75%.
           </p>
           <p className="text-lg leading-relaxed mb-4">
-            My stack runs deep on both ends. I'm fluent in Python, TypeScript, JavaScript, and SQL, and I work regularly with Node.js, FastAPI, React, Next.js, and React Native. I've built RAG pipelines with LangChain and Supabase achieving sub-100ms AI inference, freelanced on a full-stack React Native product while leading a three-person team end-to-end, and I carry a LeetCode rating of 1635+ with 400+ problems solved.
+            My stack runs deep on both ends. I work with Python, Go, TypeScript, JavaScript, SQL, Node.js, FastAPI, React, Next.js, and React Native. I’ve built RAG pipelines with LangChain and Supabase that achieved sub-100ms AI inference, shipped an AI-powered React Native product as a freelancer while leading a three-person team, and solved 420+ LeetCode problems, including 28 Hard problems, with a contest rating of 1654.
           </p>
 
           <p className="text-lg leading-relaxed">
-            Outside of shipping code, I was the R&D Lead at my college's Space Club and I'm a core member of the Cybersecurity Club. I care about systems that hold up in production, code that someone else can maintain, and interfaces that people actually enjoy using.
+            I’m also building RamForze, a Go and SwiftUI LAN task dispatcher that explores resource-aware execution, secure task communication, BLE peer discovery, and crash-safe recovery. Outside of shipping code, I was the R&D Lead of my college’s Space Club and a former core member of the Cybersecurity Club. I care about systems that hold up in production, code that someone else can maintain, and interfaces that people actually enjoy using.
           </p>
         </div>
       </div>
