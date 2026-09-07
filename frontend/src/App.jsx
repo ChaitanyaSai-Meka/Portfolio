@@ -134,26 +134,35 @@ useEffect(() => {
         {/* Structured Data */}
         <script type="application/ld+json">
           {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Chaitanya Sai Meka",
-              "url": "https://chaitanya-sai-meka.vercel.app/",
-              "image": "https://chaitanya-sai-meka.vercel.app/profile_pic.png",
-              "description": "Computer Science and Artificial Intelligence student interested in software engineering and AI/ML, with experience building backend systems and full-stack applications.",
-              "alumniOf": {
-                "@type": "EducationalOrganization",
-                "name": "Newton School of Technology, Rishihood University"
-              },
-              "sameAs": [
-                "https://github.com/ChaitanyaSai-Meka",
-                "https://www.instagram.com/chaitanyasai_meka/",
-                "https://www.linkedin.com/in/chaitanya-sai-meka/",
-                "https://leetcode.com/u/chaitanyasai_meka/",
-                "https://codeforces.com/profile/Chaitanyasai_meka"
-              ]
-            }
-          `}
+                {
+                  "@context": "https://schema.org",
+                  "@graph": [
+                    {
+                      "@type": "WebSite",
+                      "name": "Chaitanya Sai Meka",
+                      "url": "https://chaitanya-sai-meka.vercel.app/"
+                    },
+                    {
+                      "@type": "Person",
+                      "name": "Chaitanya Sai Meka",
+                      "url": "https://chaitanya-sai-meka.vercel.app/",
+                      "image": "https://chaitanya-sai-meka.vercel.app/profile_pic.png",
+                      "description": "Computer Science and Artificial Intelligence student interested in software engineering and AI/ML, with experience building backend systems and full-stack applications.",
+                      "alumniOf": {
+                        "@type": "EducationalOrganization",
+                        "name": "Newton School of Technology, Rishihood University"
+                      },
+                      "sameAs": [
+                        "https://github.com/ChaitanyaSai-Meka",
+                        "https://www.instagram.com/chaitanyasai_meka/",
+                        "https://www.linkedin.com/in/chaitanya-sai-meka/",
+                        "https://leetcode.com/u/chaitanyasai_meka/",
+                        "https://codeforces.com/profile/Chaitanyasai_meka"
+                      ]
+                    }
+                  ]
+                }
+              `}
         </script>
       </Helmet>
 
