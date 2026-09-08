@@ -7,7 +7,6 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Loader from './components/Loader';
 import EnterScreen from './components/EnterScreen';
-import Footer from './components/Footer';
 import Skills from './components/Skills';
 import Logbook from './components/LogBook';
 import NotFound from './components/NotFound';
@@ -184,7 +183,6 @@ useEffect(() => {
               <Route path="/logbook" element={<Logbook />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <Footer />
             <ChatBotWrapper />
             <SpeedInsights />
             <Analytics />
