@@ -58,7 +58,7 @@ useEffect(() => {
 useEffect(() => {
   const checkAIHealth = async () => {
     try {
-      await fetch(`${process.env.VITE_AI_SERVICE_URL}/health`);
+      await fetch(`${import.meta.env.VITE_AI_SERVICE_URL}/health`);
       console.log("AI service health check completed");
     } catch (err) {
       console.error("AI service health check failed:", err);
@@ -108,7 +108,7 @@ useEffect(() => {
         />
         <meta
           property="og:image"
-          content="https://chaitanya-sai-meka.vercel.app/profile_pic.png"
+          content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg"
         />
         <meta
           property="og:site_name"
@@ -128,7 +128,7 @@ useEffect(() => {
         />
         <meta
           name="twitter:image"
-          content="https://chaitanya-sai-meka.vercel.app/profile_pic.png"
+          content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg"
         />
 
         {/* Structured Data */}
@@ -146,7 +146,7 @@ useEffect(() => {
                       "@type": "Person",
                       "name": "Chaitanya Sai Meka",
                       "url": "https://chaitanya-sai-meka.vercel.app/",
-                      "image": "https://chaitanya-sai-meka.vercel.app/profile_pic.png",
+                      "image": "https://chaitanya-sai-meka.vercel.app/profile_pic.jpg",
                       "description": "Computer Science and Artificial Intelligence student interested in software engineering and AI/ML, with experience building backend systems and full-stack applications.",
                       "alumniOf": {
                         "@type": "EducationalOrganization",
