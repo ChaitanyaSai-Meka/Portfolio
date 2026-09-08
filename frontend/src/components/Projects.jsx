@@ -16,7 +16,7 @@ const projects = [
     link: "https://github.com/ChaitanyaSai-Meka/devledger#readme",
     linkLabel: "README →",
     code: "https://github.com/ChaitanyaSai-Meka/devledger.git",
-    image: "/devledger.png",
+    image: "/devledger.webp",
     blurhash:"L56b13~q%LWBNaNaS2bbIoWVoffk"
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     "A native macOS music visualizer that turns your screen edges into a beat-synced, album-colored ambient light.",
     link: "https://edgebeat.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/EdgeBeat",
-    image: "/edge_beat.png",
+    image: "/edge_beat.webp",
     blurhash:"L12~P;xu00D%j]RjRjxu00WB~qxu"
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     "A Document Search Platform leveraging vector databases and LLMs for semantic search and Q&A over PDFs.",
     link: "https://univa-ten.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/UNIVA",
-    image: "/univa.png",
+    image: "/univa.webp",
     blurhash:"L1SPX|xvtn~q00t7_2Io00oe-pM|"
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     "An end-to-end predictive analytics and autonomous AI agent for credit risk assessment.",
     link: "https://credit-risk-system6.streamlit.app/",
     code: "https://github.com/Dhanvin1520/Credit_Risk_RAGSystem",
-    image: "/credit_risk.png",
+    image: "/credit_risk.webp",
     blurhash:"LCQJl=?X~p-;^^IXIWV@-MN2IVfk"
   },
   {
@@ -51,7 +51,7 @@ const projects = [
     description: "Architected a RAG system to enable real-time semantic search and Q&A over private PDF documents.",
     link: "https://the-vault-smoky.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/THE-VAULT",
-    image: "/the-vault.png",
+    image: "/the-vault.webp",
     blurhash:"L1TI,a?bWA_3IVofM{%M00t7Rjxu"
   },
   {
@@ -60,7 +60,7 @@ const projects = [
     "A modern, animated clone of the official Apple website made with smooth scroll and transitions.",
     link: "https://apple-website-ecru-xi.vercel.app/",
     code: "https://github.com/ChaitanyaSai-Meka/Apple_Website",
-    image: "/Apple_website.png",
+    image: "/Apple_website.webp",
     blurhash:"L02$Hd9Z00~pneofp0WB00?a~V01"
   },
   {
@@ -68,7 +68,7 @@ const projects = [
     description: "Features smooth scrolling and logo animation using HTML, CSS, JS, Lenis, and GSAP. ",
     link: "https://chaitanyasai-meka.github.io/CYBERFICTION/",
     code: "https://github.com/ChaitanyaSai-Meka/CYBERFICTION",
-    image: "/cyberfiction.png",
+    image: "/cyberfiction.webp",
     blurhash:"LbOzMcWB_NxuR*t7RjRjogWBM{fk"
   },
   {
@@ -77,7 +77,7 @@ const projects = [
       "A sleek voice-agent that listens, understands, and responds in real time.",
     link: "",
     code: "https://github.com/ChaitanyaSai-Meka/Akira",
-    image: "/akira_voice_agent.png",
+    image: "/akira_voice_agent.webp",
     blurhash:"L02~TTwJ4mbIeRtBRzf5DzWT%Pj]"
   },
   {
@@ -86,7 +86,7 @@ const projects = [
       "Metro Route Finder web app with route optimization, and user-friendly interface.",
     link: "",
     code: "https://github.com/ChaitanyaSai-Meka/mepa",
-    image: "/mepa.png",
+    image: "/mepa.webp",
     blurhash:"L2SF;N%M_4-;00WBRjj[00WB9Eaz"
   },
   {
@@ -95,7 +95,7 @@ const projects = [
       "Movie explorer website with sleek UI and live API integration.",
     link: "",
     code: "https://github.com/ChaitanyaSai-Meka/MoviesWeb_Project",
-    image: "/Movies.png",
+    image: "/Movies.webp",
     blurhash:"LACZ35PqnOi_T0X9a|WA00+FIpkW"
   },
   {
@@ -104,7 +104,7 @@ const projects = [
       "Final capstone web project showcasing HTML and CSS skills.",
     link: "",
     code: "https://github.com/ChaitanyaSai-Meka/Capstone_Project",
-    image: "/Capstone.png",
+    image: "/Capstone.webp",
     blurhash:"LhLz?TRk~qoe-=azM{ay?cs.MxbH"
   },
   {
@@ -112,7 +112,7 @@ const projects = [
     description: "Healthy Middle-Class India: Tackles obesity and lifestyle diseases with systemic solutions.",
     link: "",
     code: "https://github.com/ChaitanyaSai-Meka/FSTE",
-    image: "/fste.png",
+    image: "/fste.webp",
     blurhash:"L1NAoU3}MZPp004N019c00UDI89H"
   },
   {
@@ -121,7 +121,7 @@ const projects = [
       "Local distributed task dispatcher for macOS that turns idle machines into LAN compute nodes.",
     link: "",
     code: "https://github.com/ChaitanyaSai-Meka/RamForze",
-    image: "/black_page.jpg",
+    image: "/black_page.webp",
     blurhash:"L00SvEayWAfQozfQayfQayfQf8fQ",
     status: "In Progress"
   },

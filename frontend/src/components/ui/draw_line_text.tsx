@@ -5,6 +5,10 @@ import { ComponentProps, useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
+// Tracks texts whose draw animation completed, so remounts (route re-entry)
+// render the final state instead of replaying
+const playedTexts = new Set<string>();
+
 type DrawTextProps = {
   afterFill?: boolean;
   color?: string;
@@ -104,6 +108,14 @@ export const DrawLineText = ({
         (el) => el.getBoundingClientRect().width != 0
       );
 
+      if (playedTexts.has(text)) {
+        textChildren.forEach((el) => {
+          el.style.strokeDashoffset = "0px";
+          if (afterFill) el.style.fillOpacity = "1";
+        });
+        return;
+      }
+
       const tl = gsap.timeline();
       tl.to(textChildren, {
         strokeDashoffset: 0,
@@ -122,6 +134,7 @@ export const DrawLineText = ({
           },
         });
       }
+      tl.eventCallback("onComplete", () => playedTexts.add(text));
     },
     // Rerun GSAP animation if text or currentFontSize changes
     { scope: wrapperRef, dependencies: [text, currentFontSize] }

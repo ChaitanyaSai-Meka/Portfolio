@@ -14,13 +14,13 @@ const About = () => {
         <meta property="og:description" content="Get to know Chaitanya Sai Meka's background, skills, projects, and entrepreneurial aspirations in full-stack development and AI/ML." />
         <meta property="og:type" content="profile" />
         <meta property="og:url" content="https://chaitanya-sai-meka.vercel.app/about" />
-        <meta property="og:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.png" />
+        <meta property="og:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg" />
         <meta property="og:site_name" content="Chaitanya Sai Meka's Portfolio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@IAMCHAITANYASAI" />
         <meta name="twitter:title" content="About Chaitanya Sai Meka | Full Stack Developer" />
         <meta name="twitter:description" content="Discover Chaitanya Sai Meka's passion for coding, full-stack development, AI, and building impactful digital solutions." />
-        <meta name="twitter:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.png" />
+        <meta name="twitter:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg" />
       </Helmet>
       
       {/* Background pattern */}
@@ -39,7 +39,7 @@ const About = () => {
         {/* Profile Image */}
         <div className="w-64 h-64 rounded-full overflow-hidden flex-shrink-0 border-4 border-neutral-800">
         <BlurImage
-          src="/profile_pic.png"
+          src="/profile_pic.jpg"
           blurhash="LAB._mEN5SkC-TNdofWX0hay}=WC"
           alt="Chaitanya Sai Meka, Computer Science and AI student"
           className="w-full h-full"
