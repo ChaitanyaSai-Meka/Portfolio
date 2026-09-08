@@ -1,27 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { cn } from "../lib/utils";
 import BlurImage from './utils/BlurImage';
-import { Helmet } from 'react-helmet-async';
 
 const About = () => {
+  useEffect(() => {
+    // React 19's native metadata tags don't replace the static ones in
+    // index.html, so the route-level overrides are applied directly
+    const previousTitle = document.title;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const previousCanonical = canonical?.getAttribute("href");
+    const description = document.querySelector('meta[name="description"]');
+    const previousDescription = description?.getAttribute("content");
+
+    document.title =
+      "About Chaitanya Sai Meka | CS & AI Student | Software & AI/ML";
+    if (canonical) {
+      canonical.setAttribute(
+        "href",
+        "https://chaitanya-sai-meka.vercel.app/about"
+      );
+    }
+    if (description) {
+      description.setAttribute(
+        "content",
+        "Learn more about Chaitanya Sai Meka, a Computer Science & AI student building software systems and exploring AI/ML, with experience in Go, Python, TypeScript, Node.js, and modern backend technologies."
+      );
+    }
+
+    return () => {
+      document.title = previousTitle;
+      if (canonical && previousCanonical) {
+        canonical.setAttribute("href", previousCanonical);
+      }
+      if (description && previousDescription) {
+        description.setAttribute("content", previousDescription);
+      }
+    };
+  }, []);
+
   return (
     <section className="about-container relative flex min-h-[50rem] md:min-h-screen w-full items-center justify-center bg-black text-center py-20 px-4">
-      <Helmet>
-        <title>About Chaitanya Sai Meka | Full Stack Developer & AI Enthusiast</title>
-        <meta name="description" content="Learn more about Chaitanya Sai Meka, a passionate full-stack developer with expertise in React, Node.js, AI/ML, UI/UX design, and entrepreneurial ventures. Discover my journey and goals." />
-        <link rel="canonical" href="https://chaitanya-sai-meka.vercel.app/about" />
-        <meta property="og:title" content="About Chaitanya Sai Meka | Full Stack Developer" />
-        <meta property="og:description" content="Get to know Chaitanya Sai Meka's background, skills, projects, and entrepreneurial aspirations in full-stack development and AI/ML." />
-        <meta property="og:type" content="profile" />
-        <meta property="og:url" content="https://chaitanya-sai-meka.vercel.app/about" />
-        <meta property="og:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg" />
-        <meta property="og:site_name" content="Chaitanya Sai Meka's Portfolio" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content="@IAMCHAITANYASAI" />
-        <meta name="twitter:title" content="About Chaitanya Sai Meka | Full Stack Developer" />
-        <meta name="twitter:description" content="Discover Chaitanya Sai Meka's passion for coding, full-stack development, AI, and building impactful digital solutions." />
-        <meta name="twitter:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg" />
-      </Helmet>
+      <meta property="og:title" content="About Chaitanya Sai Meka | CS & AI Student | Software & AI/ML" />
+      <meta property="og:description" content="Computer Science & AI student building software systems and exploring AI/ML, with experience in Go, Python, TypeScript, Node.js, and modern backend technologies." />
+      <meta property="og:type" content="profile" />
+      <meta property="og:url" content="https://chaitanya-sai-meka.vercel.app/about" />
+      <meta property="og:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg" />
+      <meta property="og:site_name" content="Chaitanya Sai Meka's Portfolio" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content="@IAMCHAITANYASAI" />
+      <meta name="twitter:title" content="About Chaitanya Sai Meka | CS & AI Student | Software & AI/ML" />
+      <meta name="twitter:description" content="Computer Science & AI student building software systems and exploring AI/ML, with experience in Go, Python, TypeScript, Node.js, and modern backend technologies." />
+      <meta name="twitter:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg" />
       
       {/* Background pattern */}
       <div
@@ -52,7 +81,7 @@ const About = () => {
             About Me.
           </h1>
           <p className="text-lg leading-relaxed mb-4">
-            I’m Chaitanya Sai Meka, a Computer Science and AI student focused on backend engineering, distributed systems, and data-heavy products. During my Software Engineer internship at Vizal AI, I independently architected Kriya’s backend in FastAPI and built the PostgreSQL pipelines and async data collectors powering Kivo Money’s GenAI platform, cutting batch processing time by 75%.
+            I’m Chaitanya Sai Meka, a Computer Science & AI student building software systems and exploring AI/ML, with a focus on backend engineering, distributed systems, and data-heavy products. During my Software Engineer internship at Vizal AI, I independently architected Kriya’s backend in FastAPI and built the PostgreSQL pipelines and async data collectors powering Kivo Money’s GenAI platform, cutting batch processing time by 75%.
           </p>
           <p className="text-lg leading-relaxed mb-4">
             My stack runs deep on both ends. I work with Python, Go, TypeScript, JavaScript, SQL, Node.js, FastAPI, React, Next.js, and React Native. I’ve built RAG pipelines with LangChain and Supabase that achieved sub-100ms AI inference, shipped an AI-powered React Native product as a freelancer while leading a three-person team, and solved 420+ LeetCode problems, including 28 Hard problems, with a contest rating of 1654.

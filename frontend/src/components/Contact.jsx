@@ -29,12 +29,12 @@ const Contact = () => {
         "Nrt6aQrzDZimIGqI8"     
       )
       .then(() => {
-        setStatus(" Message sent successfully!");
+        setStatus({ type: "success", message: "Message sent successfully!" });
         formRef.current.reset();
       })
       .catch((err) => {
         console.error("EmailJS error:", err);
-        setStatus(" Failed to send message. Please try again later.");
+        setStatus({ type: "error", message: "Failed to send message. Please try again later." });
       })
       .finally(() => setSending(false));
   };
@@ -96,8 +96,8 @@ const Contact = () => {
           </div>
 
           {status && (
-            <p className={`mt-4 text-sm ${status? "text-green-400" : "text-red-400"}`}>
-              {status}
+            <p className={`mt-4 text-sm ${status.type === "success" ? "text-green-400" : "text-red-400"}`}>
+              {status.message}
             </p>
           )}
         </form>
