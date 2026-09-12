@@ -1,109 +1,113 @@
-import React, { useEffect, useRef, useState } from "react";
-import { cn } from "../lib/utils";
-import { HoverBorderGradient } from "./ui/hover-border-gradient";
-import emailjs from "emailjs-com";
+import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import emailjs from 'emailjs-com';
+import { cn } from '../lib/utils';
 
-const Contact = () => {
-  const formRef = useRef(null); 
+export default function Contact() {
+  const formRef = useRef(null);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
-
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setSending(true);
-
-    if (!formRef.current) return;
+    setStatus(null);
 
     emailjs
       .sendForm(
-        "service_7yymo38",       
-        "template_12345",       
+        'service_7yymo38',
+        'template_12345',
         formRef.current,
-        "Nrt6aQrzDZimIGqI8"     
+        'Nrt6aQrzDZimIGqI8'
       )
-      .then(() => {
-        setStatus({ type: "success", message: "Message sent successfully!" });
-        formRef.current.reset();
-      })
-      .catch((err) => {
-        console.error("EmailJS error:", err);
-        setStatus({ type: "error", message: "Failed to send message. Please try again later." });
-      })
-      .finally(() => setSending(false));
+      .then(
+        (result) => {
+          setSending(false);
+          setStatus({ type: 'success', message: 'Message sent successfully!' });
+          formRef.current.reset();
+        },
+        (error) => {
+          setSending(false);
+          setStatus({ type: 'error', message: 'Something went wrong, please try again.' });
+        }
+      );
   };
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-4 py-20 bg-black">
-      {/* Background pattern */}
-      <div
-        className={cn(
-          "absolute inset-0 z-0",
-          "[background-size:20px_20px]",
-          "[background-image:radial-gradient(#404040_1px,transparent_1px)]"
-        )}
-      />
+    <section id="contact" className="relative bg-[#050505] min-h-[90vh] flex items-center justify-center py-24 px-4 overflow-hidden">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-white/[0.03] blur-[120px] rounded-full pointer-events-none" />
+      
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-2xl relative z-10"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-5xl sm:text-7xl font-bold tracking-tighter text-white mb-4">
+            Get in Touch.
+          </h2>
+          <p className="text-neutral-400 text-lg">
+            Have an interesting project or an engineering role? Let's talk.
+          </p>
+        </div>
 
-      {/* Radial mask overlay */}
-      <div className="pointer-events-none absolute inset-0 z-10 bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-
-      {/* Content */}
-      <div className="relative z-20 max-w-xl w-full text-center">
-        <h1 className="bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-5xl sm:text-6xl font-bold tracking-tight text-transparent">
-          Connect with Me
-        </h1>
-        <p className="mt-4 text-neutral-400 text-lg">Let’s chat. Drop a message!</p>
-
-        <form ref={formRef} onSubmit={sendEmail} className="mt-10 space-y-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            required
-            className="w-full rounded-md bg-black/40 px-4 py-2 text-white placeholder-neutral-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-white/20"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            className="w-full rounded-md bg-black/40 px-4 py-2 text-white placeholder-neutral-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-white/20"
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            required
-            rows={4}
-            className="w-full rounded-md bg-black/40 px-4 py-2 text-white placeholder-neutral-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-white/20"
-          />
-
-          <div className="mt-6 flex justify-center">
-            <HoverBorderGradient
-              containerClassName="rounded-full"
-              as="button"
-              type="submit"
-              disabled={sending}
-              className="bg-black text-white flex items-center space-x-2 px-6 py-2 font-semibold disabled:opacity-60"
-            >
-              <span>{sending ? "Sending..." : "Send Message"}</span>
-            </HoverBorderGradient>
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-2 text-left">
+              <label htmlFor="name" className="text-sm text-neutral-400 ml-1">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 transition-colors"
+                placeholder="John Doe"
+              />
+            </div>
+            <div className="space-y-2 text-left">
+              <label htmlFor="email" className="text-sm text-neutral-400 ml-1">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 transition-colors"
+                placeholder="john@example.com"
+              />
+            </div>
+          </div>
+          
+          <div className="space-y-2 text-left">
+            <label htmlFor="message" className="text-sm text-neutral-400 ml-1">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={5}
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 transition-colors resize-none"
+              placeholder="Tell me about your project..."
+            />
           </div>
 
-          {status && (
-            <p className={`mt-4 text-sm ${status.type === "success" ? "text-green-400" : "text-red-400"}`}>
-              {status.message}
-            </p>
-          )}
+          <div className="flex flex-col items-center gap-4 pt-4">
+            <button
+              type="submit"
+              disabled={sending}
+              className="px-8 py-3 bg-white text-black rounded-full font-medium hover:bg-neutral-200 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              {sending ? 'Sending...' : 'Send Message'}
+            </button>
+            
+            {status && (
+              <p className={cn("text-sm", status.type === 'success' ? 'text-emerald-500' : 'text-red-500')}>
+                {status.message}
+              </p>
+            )}
+          </div>
         </form>
-      </div>
+      </motion.div>
     </section>
   );
-};
-
-export default Contact;
+}

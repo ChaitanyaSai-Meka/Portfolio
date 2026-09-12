@@ -1,96 +1,63 @@
-import React, { useEffect } from 'react';
-import { cn } from "../lib/utils";
+import React from 'react';
+import { motion } from 'framer-motion';
 import BlurImage from './utils/BlurImage';
+import { cn } from '../lib/utils';
 
 const About = () => {
-  useEffect(() => {
-    // React 19's native metadata tags don't replace the static ones in
-    // index.html, so the route-level overrides are applied directly
-    const previousTitle = document.title;
-    const canonical = document.querySelector('link[rel="canonical"]');
-    const previousCanonical = canonical?.getAttribute("href");
-    const description = document.querySelector('meta[name="description"]');
-    const previousDescription = description?.getAttribute("content");
-
-    document.title =
-      "About Chaitanya Sai Meka | CS & AI Student | Software & AI/ML";
-    if (canonical) {
-      canonical.setAttribute(
-        "href",
-        "https://chaitanya-sai-meka.vercel.app/about"
-      );
-    }
-    if (description) {
-      description.setAttribute(
-        "content",
-        "Learn more about Chaitanya Sai Meka, a Computer Science & AI student building software systems and exploring AI/ML, with experience in Go, Python, TypeScript, Node.js, and modern backend technologies."
-      );
-    }
-
-    return () => {
-      document.title = previousTitle;
-      if (canonical && previousCanonical) {
-        canonical.setAttribute("href", previousCanonical);
-      }
-      if (description && previousDescription) {
-        description.setAttribute("content", previousDescription);
-      }
-    };
-  }, []);
-
   return (
-    <section className="about-container relative flex min-h-[50rem] md:min-h-screen w-full items-center justify-center bg-black text-center py-20 px-4">
-      <meta property="og:title" content="About Chaitanya Sai Meka | CS & AI Student | Software & AI/ML" />
-      <meta property="og:description" content="Computer Science & AI student building software systems and exploring AI/ML, with experience in Go, Python, TypeScript, Node.js, and modern backend technologies." />
-      <meta property="og:type" content="profile" />
-      <meta property="og:url" content="https://chaitanya-sai-meka.vercel.app/about" />
-      <meta property="og:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg" />
-      <meta property="og:site_name" content="Chaitanya Sai Meka's Portfolio" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content="@IAMCHAITANYASAI" />
-      <meta name="twitter:title" content="About Chaitanya Sai Meka | CS & AI Student | Software & AI/ML" />
-      <meta name="twitter:description" content="Computer Science & AI student building software systems and exploring AI/ML, with experience in Go, Python, TypeScript, Node.js, and modern backend technologies." />
-      <meta name="twitter:image" content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg" />
-      
-      {/* Background pattern */}
-      <div
-        className={cn(
-          "absolute inset-0",
-          "[background-size:20px_20px]",
-          "[background-image:radial-gradient(#404040_1px,transparent_1px)]"
-        )}
-      />
-      {/* Faded radial gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+    <section id="about" className="relative bg-[#050505] min-h-screen flex items-center justify-center py-32 px-4 sm:px-8 overflow-hidden">
+      {/* Subtle background glow */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-[150px] rounded-full pointer-events-none"></div>
 
-      {/* Content */}
-      <div className="relative z-20 max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start gap-12">
+      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-24 relative z-10">
+        
         {/* Profile Image */}
-        <div className="w-64 h-64 rounded-full overflow-hidden flex-shrink-0 border-4 border-neutral-800">
-        <BlurImage
-          src="/profile_pic.jpg"
-          blurhash="LAB._mEN5SkC-TNdofWX0hay}=WC"
-          alt="Chaitanya Sai Meka, Computer Science and AI student"
-          className="w-full h-full"
-        />
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-72 h-72 sm:w-80 sm:h-80 rounded-[2rem] overflow-hidden flex-shrink-0 border border-white/10 shadow-2xl bg-neutral-900"
+        >
+          <BlurImage 
+            src="/profile_pic.jpg" 
+            blurhash="LAB._mEN5SkC-TNdofWX0hay}=WC" 
+            alt="Chaitanya Sai Meka" 
+            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+          />
+        </motion.div>
 
         {/* Text Content */}
-        <div className="text-left text-neutral-300 max-w-2xl ml-8 md:ml-16">
-          <h1 className="text-4xl sm:text-7xl font-bold tracking-tight bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent py-8">
-            About Me.
-          </h1>
-          <p className="text-lg leading-relaxed mb-4">
-            I’m Chaitanya Sai Meka, a Computer Science & AI student building software systems and exploring AI/ML, with a focus on backend engineering, distributed systems, and data-heavy products. During my Software Engineer internship at Vizal AI, I independently architected Kriya’s backend in FastAPI and built the PostgreSQL pipelines and async data collectors powering Kivo Money’s GenAI platform, cutting batch processing time by 75%.
-          </p>
-          <p className="text-lg leading-relaxed mb-4">
-            My stack runs deep on both ends. I work with Python, Go, TypeScript, JavaScript, SQL, Node.js, FastAPI, React, Next.js, and React Native. I’ve built RAG pipelines with LangChain and Supabase that achieved sub-100ms AI inference, shipped an AI-powered React Native product as a freelancer while leading a three-person team, and solved 420+ LeetCode problems, including 28 Hard problems, with a contest rating of 1654.
-          </p>
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="flex-1"
+        >
+          <h2 className="text-5xl sm:text-7xl font-bold tracking-tighter text-white mb-8">
+            The Engineer.
+          </h2>
+          
+          <div className="space-y-6 text-neutral-400 text-lg leading-relaxed">
+            <p>
+              I'm Chaitanya Sai Meka, a Computer Science & AI student focused on building complex backend architectures, distributed systems, and AI-driven products. At my core, I care about performance, scalability, and code that engineers actually want to maintain.
+            </p>
+            
+            <p>
+              During my SWE internship at <span className="text-neutral-200 font-medium">Vizal AI</span>, I architected Kriya's backend in FastAPI and built heavy PostgreSQL data pipelines for Kivo Money's GenAI platform—successfully cutting batch processing time by 75%.
+            </p>
+            
+            <p>
+              I run deep on both ends of the stack. I build RAG pipelines with <span className="text-neutral-200 font-medium">LangChain and Supabase</span> that achieve sub-100ms inference. I'm also building <span className="text-neutral-200 font-medium">RamForze</span>, a local distributed task dispatcher for macOS to harness idle LAN compute nodes.
+            </p>
+            
+            <p>
+              Beyond the code, I was the R&D Lead of my college's Space Club and a core member of the Cybersecurity Club. I have solved 420+ LeetCode problems (28 Hard) with a contest rating of 1654.
+            </p>
+          </div>
+        </motion.div>
 
-          <p className="text-lg leading-relaxed">
-            I’m also building RamForze, a Go and SwiftUI LAN task dispatcher that explores resource-aware execution, secure task communication, BLE peer discovery, and crash-safe recovery. Outside of shipping code, I was the R&D Lead of my college’s Space Club and a former core member of the Cybersecurity Club. I care about systems that hold up in production, code that someone else can maintain, and interfaces that people actually enjoy using.
-          </p>
-        </div>
       </div>
     </section>
   );

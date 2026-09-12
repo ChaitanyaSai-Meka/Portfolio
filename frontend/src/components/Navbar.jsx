@@ -1,52 +1,118 @@
-import { Link, useLocation } from "react-router-dom";
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { Home, User, Code, Briefcase, Mail, Award } from 'lucide-react';
+import { cn } from '../lib/utils';
 
-const Navbar = () => {
-  const location = useLocation();
+const links = [
+  { id: 'home', icon: Home, label: 'Home' },
+  { id: 'about', icon: User, label: 'About' },
+  { id: 'experience', icon: Award, label: 'Experience' },
+  { id: 'skills', icon: Code, label: 'Skills' },
+  { id: 'projects', icon: Briefcase, label: 'Projects' },
+  { id: 'contact', icon: Mail, label: 'Contact' },
+];
 
-  const links = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/skills", label: "Skills" },
-    { path: "/projects", label: "Projects" },
-    { path: "/contact", label: "Contact" },
-  ];
+function DockIcon({ link, mouseX, activeSection }) {
+  const ref = useRef(null);
+  
+  const distance = useTransform(mouseX, (val) => {
+    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    return val - bounds.x - bounds.width / 2;
+  });
+
+  const widthSync = useTransform(distance, [-150, 0, 150], [44, 72, 44]);
+  const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
+  const [hovered, setHovered] = useState(false);
+
+  const isActive = activeSection === link.id;
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const element = document.getElementById(link.id);
+    if (element) {
+      window.scrollTo({ top: element.offsetTop, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <nav id="nav-overall">
-      <div id="nav-div">
-        {links.map((link) => (
-          <Link
-            key={link.path}
-            to={link.path}
-            className={`nav-a
-              md:inline
-              ${location.pathname === link.path ? "hidden md:inline" : ""}
-            `}
+    <div
+      className="relative flex items-center justify-center"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 2, x: '-50%' }}
+            className="absolute -top-12 left-1/2 rounded-md bg-neutral-900 px-3 py-1.5 text-xs text-white border border-white/10 whitespace-nowrap"
           >
             {link.label}
-          </Link>
-        ))}
-      </div>
-
-      {/* Logbook Link */}
-      <div
-        style={{ marginLeft: 'auto' }}
-        className="relative hidden md:flex items-center justify-center"
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <motion.button
+        ref={ref}
+        style={{ width, height: width }}
+        onClick={handleClick}
+        className={cn(
+          "flex items-center justify-center rounded-full transition-colors duration-200 relative",
+          isActive ? "bg-white/15" : "hover:bg-white/10 text-white/70 hover:text-white"
+        )}
+        aria-label={link.label}
       >
-        <a
-          href="/logbook"
-          className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-sm font-semibold leading-6 text-white inline-block">
-          <span className="absolute inset-0 overflow-hidden rounded-full">
-            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          </span>
-          <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-1.5 px-5 ring-1 ring-white/10">
-            <span>Logbook</span>
-          </div>
-          <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
-        </a>
-      </div>
-    </nav>
+        <link.icon className="w-5 h-5 relative z-10" />
+      </motion.button>
+      {isActive && (
+        <motion.div
+          layoutId="active-dot"
+          className="absolute -bottom-2 w-1 h-1 rounded-full bg-white"
+          initial={false}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        />
+      )}
+    </div>
   );
-};
+}
 
-export default Navbar;
+export default function Navbar() {
+  const mouseX = useMotionValue(Infinity);
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY + window.innerHeight / 2;
+      let currentSection = links[0].id;
+      
+      for (const link of links) {
+        const element = document.getElementById(link.id);
+        if (element) {
+          if (scrollY >= element.offsetTop) {
+            currentSection = link.id;
+          }
+        }
+      }
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Init
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.5 }}
+      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 h-16 flex items-end pb-2 px-4 gap-4 bg-neutral-900/70 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl"
+      onMouseMove={(e) => mouseX.set(e.pageX)}
+      onMouseLeave={() => mouseX.set(Infinity)}
+    >
+      {links.map((link) => (
+        <DockIcon key={link.id} link={link} mouseX={mouseX} activeSection={activeSection} />
+      ))}
+    </motion.div>
+  );
+}

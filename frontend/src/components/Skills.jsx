@@ -1,131 +1,170 @@
-import React, { useRef } from "react";
-import { cn } from "../lib/utils";
-import { CardSpotlight } from "./ui/card-spotlight";
-import {
-  FaReact,
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaPython,
-} from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
+import React from 'react';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import { cn } from '../lib/utils';
+import { FaPython, FaNodeJs, FaDocker, FaDatabase, FaReact } from 'react-icons/fa';
+import { SiGo, SiFastapi, SiPostgresql, SiMysql, SiTypescript, SiNextdotjs, SiTailwindcss } from 'react-icons/si';
 
-const Skills = () => {
-  const skills = [
-    // --- Core language ---
-    { key: "GOLANG_LOGO", color: "#00ADD8", icon: <img src="/golang.webp" alt="GOLANG" className="w-13 h-13 px-0.5 pb-0.5 object-contain" /> },
-    { key: "python", color: "#3776AB", icon: <FaPython className="text-xl" /> },
+const SpotlightCard = ({ children, className }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-    // --- Infra / DevOps ---
-    { key: "Docker_Logo", color: "#2496ED", icon: <img src="/docker_logo.webp" alt="Docker" className="w-10 h-10 px-1 pb-1 object-contain" /> },
-    { key: "postgresql", color: "#4169E1", icon: <img src="/postgresql.webp" alt="Postgresql" className="w-9 h-9 p-1 object-contain" /> },
-    { key: "MySQL", color: "#00758F", icon: <img src="/mysql_logo.webp" alt="Mysql" className="w-15 h-15 p-1 object-contain" /> },
-
-    // --- Backend frameworks ---
-    { key: "NodeJS_logo", color: "#339933", icon: <img src="/NodeJS_Logo.webp" alt="NodeJS" className="w-13 h-12 p-1 object-contain" /> },
-    { key: "ExpressJS_logo", color: "#EDEDED", icon: <img src="/ExpressJS_Logo.webp" alt="ExpressJS" className="w-16 h-11 p-1 object-contain" /> },
-    { key: "Fast_API_Logo", color: "#009688", icon: <img src="/FastAPI.svg" alt="FastAPI" className="w-11 h-11 px-1 pb-1 object-contain" /> },
-    { key: "Postman_Logo", color: "#FF6C37", icon: <img src="/Postman_Logo.webp" alt="Postman" className="w-15 h-15 p-1 object-contain" /> },
-
-    // --- Fullstack / Frontend ---
-    { key: "tailwind", color: "#06B6D4", icon: <img src="/tailwind.webp" alt="Tailwind" className="w-9 h-9 p-1 object-contain" /> },
-    { key: "react", color: "#61DAFB", icon: <FaReact className="text-xl" /> },
-    { key: "js", color: "#F7DF1E", icon: <FaJs className="text-xl" /> },
-    { key: "ts", color: "#3178C6", icon: <SiTypescript className="text-xl" /> },
-    { key: "next-js-logo", color: "#F5F5F5", icon: <img src="/next.webp" alt="Next.js" className="w-15 h-15 p-1 object-contain" /> },
-    { key: "motion_logo", color: "#F24E1E", icon: <img src="/motion_logo().webp" alt="motion" className="w-15 h-15 p-1 object-contain" /> },
-
-    // --- Other ---
-    { key: "html", color: "#E34F26", icon: <FaHtml5 className="text-xl" /> },
-    { key: "css", color: "#1572B6", icon: <FaCss3Alt className="text-xl" /> },
-    { key: "gsap", color: "#88CE02", icon: <img src="/Gsap.webp" alt="Gsap" className="w-9 h-9 p-1 object-contain" /> },
-    { key: "figma_logo", color: "#F24E1E", icon: <img src="/figma_logo.webp" alt="figma" className="w-13 h-12 p-1 object-contain" /> },
-    { key: "React_Native_Logo", color: "#61DAFB", icon: <img src="/react_native_logo.webp" alt="React_Native" className="w-11 h-12 px-1 pb-1 object-contain" /> },
-  ];
-
-  const audioSources = [
-    "/e6-piano.mp3",
-    "/b6-piano.mp3",
-    "/g6-piano.mp3",
-    "/f6-piano.mp3",
-    "/a6-piano.mp3",
-    "/c6-piano.mp3",
-    "/d6-piano.mp3",
-    "/e6-piano.mp3", 
-    "/a6-piano.mp3",
-    "/c6-piano.mp3",
-    "/g6-piano.mp3",
-    "/f6-piano.mp3",
-    "/a6-piano.mp3",
-    "/f6-piano.mp3",
-    "/g6-piano.mp3",
-    "/b6-piano.mp3",
-    "/e6-piano.mp3",
-    "/d6-piano.mp3",
-    "/b6-piano.mp3",
-    "/g6-piano.mp3",
-    "/d6-piano.mp3",
-    "/a6-piano.mp3",
-  ];
-
-  const audioRefs = useRef([]);
-
-  const handleMouseEnter = (index) => {
-    const audio = new Audio(audioSources[index]);
-    audioRefs.current[index] = audio;
-    audio.play();
-  };
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center px-4 py-12 sm:py-20 bg-black">
-      
-      {/* Background Grid */}
-      <div
-        className={cn(
-          "absolute inset-0 z-0 pointer-events-none",
-          "[background-size:20px_20px]",
-          "[background-image:radial-gradient(#404040_1px,transparent_1px)]"
-        )}
+    <div
+      className={cn(
+        "group relative rounded-2xl border border-white/10 bg-neutral-950 overflow-hidden",
+        className
+      )}
+      onMouseMove={handleMouseMove}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(120,119,198,0.15),
+              transparent 80%
+            )
+          `,
+        }}
       />
-
-      {/* Radial Mask */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-
-      {/* Heading */}
-      <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-center bg-gradient-to-b from-neutral-300 to-neutral-500 bg-clip-text text-transparent z-20 mb-4 sm:mb-6">
-        Tools in My Arsenal
-      </h2>
-
-      {/* Prompts */}
-      <div className="z-20 mb-6 text-lg font-semibold text-center">
-        {/* Mobile: Tap Prompt */}
-        <p className="block sm:hidden bg-gradient-to-b from-neutral-300 to-neutral-500 bg-clip-text text-transparent">
-          Try tapping on the icons 🎵
-        </p>
-
-        {/* Desktop/Tablet: Hover Prompt */}
-        <p className="hidden sm:block bg-gradient-to-b from-neutral-300 to-neutral-500 bg-clip-text text-transparent">
-          Hover over the icons to hear a sound 🎵
-        </p>
-      </div>
-
-      {/* Icon Cards */}
-      <div className="relative z-20 flex justify-center gap-3 flex-wrap max-w-5xl w-full">
-      {skills.map(({ key, icon, color }, index) => (
-        <CardSpotlight
-          key={key}
-          className="h-18 w-18 rounded-full flex items-center justify-center bg-black"
-          color={color}
-          onMouseEnter={() => handleMouseEnter(index)}
-          onClick={() => handleMouseEnter(index)}
-        >
-          <div className="relative z-20" style={{ color }}>
-            {icon}
-          </div>
-        </CardSpotlight>
-      ))}
-      </div>
+      <div className="relative h-full">{children}</div>
     </div>
+  );
+};
+
+const SkillPill = ({ icon: Icon, name, color }) => (
+  <div className="flex items-center gap-2.5 px-4 py-2.5 bg-black border border-white/10 rounded-xl text-neutral-300 text-sm font-medium hover:-translate-y-1 hover:border-white/20 transition-all duration-300">
+    {Icon && <Icon style={{ color }} className="text-lg" />}
+    <span>{name}</span>
+  </div>
+);
+
+const Skills = () => {
+  return (
+    <section id="skills" className="bg-[#050505] py-32 px-4 sm:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-4"
+          >
+            Engineering Arsenal.
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-neutral-400 text-lg max-w-2xl"
+          >
+            The tools, languages, and frameworks I use to build scalable systems and robust products.
+          </motion.p>
+        </div>
+
+        {/* Row 1: Backend (wide) + AI/ML (narrow) */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 mb-5">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="lg:col-span-3"
+          >
+            <SpotlightCard className="p-8 h-full relative overflow-hidden">
+              <SiGo className="absolute -bottom-8 -right-8 text-[180px] text-white/[0.03] z-0" />
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold text-white mb-1">Backend & Systems</h3>
+                <p className="text-neutral-500 text-sm mb-6">Architecting high-performance, scalable distributed systems.</p>
+                <div className="flex flex-wrap gap-3">
+                  <SkillPill icon={SiGo} name="Go" color="#00ADD8" />
+                  <SkillPill icon={FaPython} name="Python" color="#3776AB" />
+                  <SkillPill icon={SiFastapi} name="FastAPI" color="#009688" />
+                  <SkillPill icon={FaNodeJs} name="Node.js" color="#339933" />
+                  <SkillPill icon={FaDocker} name="Docker" color="#2496ED" />
+                </div>
+              </div>
+            </SpotlightCard>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="lg:col-span-2"
+          >
+            <SpotlightCard className="p-8 h-full">
+              <h3 className="text-xl font-bold text-white mb-1">AI & ML</h3>
+              <p className="text-neutral-500 text-sm mb-6">Building intelligent products and data pipelines.</p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                  <span className="text-neutral-300 font-medium text-sm">LangChain & RAG</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                  <span className="text-neutral-300 font-medium text-sm">Vector Databases</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                  <span className="text-neutral-300 font-medium text-sm">Predictive Analytics</span>
+                </div>
+              </div>
+            </SpotlightCard>
+          </motion.div>
+        </div>
+
+        {/* Row 2: Databases (narrow) + Frontend (wide) */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="lg:col-span-2"
+          >
+            <SpotlightCard className="p-8 h-full">
+              <h3 className="text-xl font-bold text-white mb-1">Databases</h3>
+              <p className="text-neutral-500 text-sm mb-6">Data modeling and storage.</p>
+              <div className="flex flex-col gap-3">
+                <SkillPill icon={SiPostgresql} name="PostgreSQL" color="#4169E1" />
+                <SkillPill icon={SiMysql} name="MySQL" color="#4479A1" />
+                <SkillPill icon={FaDatabase} name="Supabase" color="#3ECF8E" />
+              </div>
+            </SpotlightCard>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="lg:col-span-3"
+          >
+            <SpotlightCard className="p-8 h-full">
+              <h3 className="text-xl font-bold text-white mb-1">Frontend & Mobile</h3>
+              <p className="text-neutral-500 text-sm mb-6">Crafting performant and intuitive user interfaces.</p>
+              <div className="flex flex-wrap gap-3">
+                <SkillPill icon={SiTypescript} name="TypeScript" color="#3178C6" />
+                <SkillPill icon={FaReact} name="React" color="#61DAFB" />
+                <SkillPill icon={SiNextdotjs} name="Next.js" color="#ffffff" />
+                <SkillPill icon={FaReact} name="React Native" color="#61DAFB" />
+                <SkillPill icon={SiTailwindcss} name="Tailwind CSS" color="#06B6D4" />
+              </div>
+            </SpotlightCard>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 };
 
