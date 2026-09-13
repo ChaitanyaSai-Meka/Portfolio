@@ -11,18 +11,19 @@ const socials = [
 ];
 
 const now = [
-  { label: "vizal ai", href: null, note: "software engineer intern" },
   { label: "rishihood university", href: null, note: "b.tech cs & ai · 2024–2028" },
+  { label: "ramforze", href: "https://github.com/ChaitanyaSai-Meka/RamForze", note: "building · go · swiftui · distributed systems" },
+  { label: "open to work", href: null, note: "swe / backend / ai roles" },
 ];
 
 const previously = [
-  { label: "flipz", href: null, note: "freelance · react native" },
-  { label: "space club", href: null, note: "head of r&d" },
-  { label: "cybersecurity club", href: null, note: "core member" },
+  { label: "vizal ai", href: null, note: "software engineer intern · dec '25 – jan '26" },
+  { label: "flipz", href: null, note: "freelance · react native · ai flashcards" },
+  { label: "space club (sast)", href: null, note: "head of r&d" },
+  { label: "cybersecurity club (socs)", href: null, note: "core member" },
 ];
 
 const projects = [
-  { label: "ramforze", href: "https://github.com/ChaitanyaSai-Meka/RamForze", note: "go · swiftui · distributed systems" },
   { label: "devledger", href: "https://github.com/ChaitanyaSai-Meka/devledger", note: "go · cli · cost splitting" },
   { label: "edgebeat", href: "https://edgebeat.vercel.app/", note: "swift · macos music visualizer" },
   { label: "univa", href: "https://univa-ten.vercel.app/", note: "rag · vector search" },
@@ -40,7 +41,7 @@ const LinkItem = ({ label, href, note, external = true }) => {
         href={href}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        className="group flex items-baseline gap-2 py-1 text-neutral-400 hover:text-white transition-colors duration-200"
+        className="group flex items-baseline gap-2 py-1.5 text-neutral-400 hover:text-white transition-colors duration-200"
       >
         <span className="underline decoration-neutral-700 underline-offset-4 group-hover:decoration-neutral-400 transition-colors">{label}</span>
         {note && <span className="text-neutral-600 text-xs">· {note}</span>}
@@ -49,7 +50,7 @@ const LinkItem = ({ label, href, note, external = true }) => {
     );
   }
   return (
-    <div className="flex items-baseline gap-2 py-1">
+    <div className="flex items-baseline gap-2 py-1.5">
       <span className="text-neutral-300">{label}</span>
       {note && <span className="text-neutral-600 text-xs">· {note}</span>}
     </div>
@@ -57,18 +58,30 @@ const LinkItem = ({ label, href, note, external = true }) => {
 };
 
 const Section = ({ title, children }) => (
-  <div className="mb-10">
-    <p className="text-neutral-600 text-xs uppercase tracking-[0.2em] mb-3 font-medium">{title}</p>
+  <div className="mb-12">
+    <p className="text-neutral-600 text-[11px] uppercase tracking-[0.2em] mb-4 font-medium">{title}</p>
     <div className="flex flex-col">{children}</div>
   </div>
 );
 
 function App() {
   return (
-    <div className="bg-[#0a0a0a] text-white min-h-screen selection:bg-white/15 flex items-center justify-center px-6 py-20">
-      <main className="w-full max-w-md">
+    <div className="relative bg-[#0a0a0a] text-white min-h-screen selection:bg-white/15 flex items-center justify-center px-6 py-20">
+      {/* Subtle dot grid background */}
+      <div
+        className="fixed inset-0 z-0 opacity-[0.35]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+
+      {/* Soft radial fade overlay */}
+      <div className="fixed inset-0 z-0 bg-[#0a0a0a] [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_70%)]" />
+
+      <main className="relative z-10 w-full max-w-md">
         {/* Header */}
-        <div className="mb-14">
+        <div className="mb-16">
           <p className="text-neutral-500 text-sm mb-3">hey, i'm</p>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight mb-3">
             chaitanya sai meka
@@ -105,7 +118,7 @@ function App() {
         </Section>
 
         {/* Resume */}
-        <div className="mt-14 pt-8 border-t border-white/5">
+        <div className="mt-16 pt-8 border-t border-white/5">
           <a
             href="/resume.pdf"
             download="Chaitanya_Sai_Meka_Resume.pdf"
