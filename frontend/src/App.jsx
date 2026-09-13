@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from "@vercel/analytics/react";
 
@@ -34,6 +34,12 @@ const projects = [
   { label: "akira", href: "https://github.com/ChaitanyaSai-Meka/Akira", note: "voice agent · nlp" },
 ];
 
+const techStack = [
+  "go", "python", "typescript", "fastapi", "node.js",
+  "react", "react native", "next.js", "tailwind",
+  "postgresql", "docker", "langchain", "rag",
+];
+
 const LinkItem = ({ label, href, note, external = true }) => {
   if (href) {
     return (
@@ -65,28 +71,98 @@ const Section = ({ title, children }) => (
 );
 
 function App() {
+  const [loadTime, setLoadTime] = useState(null);
+  const [tabCount, setTabCount] = useState(1);
+
+  useEffect(() => {
+    // Real page load time via Performance API
+    const measure = () => {
+      const entries = performance.getEntriesByType('navigation');
+      if (entries.length > 0 && entries[0].loadEventEnd > 0) {
+        setLoadTime(Math.round(entries[0].loadEventEnd));
+      } else {
+        // fallback: measure from navigation start to now
+        setLoadTime(Math.round(performance.now()));
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      // Wait a tick so loadEventEnd is populated
+      setTimeout(measure, 0);
+    } else {
+      window.addEventListener('load', () => setTimeout(measure, 0));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Real tab/session counter using BroadcastChannel
+    // Counts how many tabs of this site are open
+    let channel;
+    try {
+      channel = new BroadcastChannel('portfolio-presence');
+      const tabs = new Set();
+      const myId = crypto.randomUUID();
+      tabs.add(myId);
+
+      // Announce ourselves
+      channel.postMessage({ type: 'join', id: myId });
+
+      // Ask who else is here
+      channel.postMessage({ type: 'ping', id: myId });
+
+      channel.onmessage = (e) => {
+        const { type, id } = e.data;
+        if (type === 'join' || type === 'pong') {
+          tabs.add(id);
+          setTabCount(tabs.size);
+        }
+        if (type === 'ping' && id !== myId) {
+          channel.postMessage({ type: 'pong', id: myId });
+        }
+        if (type === 'leave') {
+          tabs.delete(id);
+          setTabCount(tabs.size);
+        }
+      };
+
+      // Announce leave on close
+      const handleUnload = () => {
+        channel.postMessage({ type: 'leave', id: myId });
+      };
+      window.addEventListener('beforeunload', handleUnload);
+
+      return () => {
+        handleUnload();
+        channel.close();
+        window.removeEventListener('beforeunload', handleUnload);
+      };
+    } catch {
+      // BroadcastChannel not supported, just show 1
+      setTabCount(1);
+    }
+  }, []);
+
   return (
-    <div className="relative bg-[#0a0a0a] text-white min-h-screen selection:bg-white/15 flex items-center justify-center px-6 py-20">
-      {/* Subtle dot grid background */}
-      <div
-        className="fixed inset-0 z-0 opacity-[0.35]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-        }}
-      />
-
-      {/* Soft radial fade overlay */}
-      <div className="fixed inset-0 z-0 bg-[#0a0a0a] [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_70%)]" />
-
+    <div
+      className="relative text-white min-h-screen selection:bg-white/15 flex items-center justify-center px-6 py-20"
+      style={{
+        backgroundColor: '#0a0a0a',
+        backgroundImage: `
+          radial-gradient(circle at 50% 50%, rgba(60, 60, 100, 0.4) 0%, transparent 50%),
+          radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)
+        `,
+        backgroundSize: '100% 100%, 28px 28px',
+        backgroundPosition: 'center, center',
+      }}
+    >
       <main className="relative z-10 w-full max-w-md">
         {/* Header */}
         <div className="mb-16">
           <p className="text-neutral-500 text-sm mb-3">hey, i'm</p>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight mb-3">
-            chaitanya sai meka
+            Chaitanya Sai Meka
           </h1>
-          <p className="text-neutral-500 text-sm">software engineer</p>
+          <p className="text-neutral-500 text-sm">cs & ai student · building things with code</p>
         </div>
 
         {/* Now */}
@@ -110,6 +186,17 @@ function App() {
           ))}
         </Section>
 
+        {/* Tech Stack */}
+        <Section title="tech i work with">
+          <div className="flex flex-wrap gap-x-3 gap-y-2">
+            {techStack.map((tech) => (
+              <span key={tech} className="text-neutral-500 text-sm hover:text-neutral-300 transition-colors cursor-default">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </Section>
+
         {/* Elsewhere */}
         <Section title="elsewhere">
           {socials.map((item) => (
@@ -117,8 +204,8 @@ function App() {
           ))}
         </Section>
 
-        {/* Resume */}
-        <div className="mt-16 pt-8 border-t border-white/5">
+        {/* Footer */}
+        <div className="mt-16 pt-8 border-t border-white/5 flex items-center justify-between">
           <a
             href="/resume.pdf"
             download="Chaitanya_Sai_Meka_Resume.pdf"
@@ -126,6 +213,18 @@ function App() {
           >
             download resume ↓
           </a>
+
+          <div className="flex items-center gap-4 text-[11px] text-neutral-600">
+            {tabCount !== null && (
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                {tabCount} online
+              </span>
+            )}
+            {loadTime !== null && (
+              <span>{loadTime}ms</span>
+            )}
+          </div>
         </div>
       </main>
       <SpeedInsights />
