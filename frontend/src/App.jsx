@@ -72,7 +72,6 @@ const Section = ({ title, children }) => (
 
 function App() {
   const [loadTime, setLoadTime] = useState(null);
-  const [tabCount, setTabCount] = useState(1);
 
   useEffect(() => {
     // Real page load time via Performance API
@@ -91,54 +90,6 @@ function App() {
       setTimeout(measure, 0);
     } else {
       window.addEventListener('load', () => setTimeout(measure, 0));
-    }
-  }, []);
-
-  useEffect(() => {
-    // Real tab/session counter using BroadcastChannel
-    // Counts how many tabs of this site are open
-    let channel;
-    try {
-      channel = new BroadcastChannel('portfolio-presence');
-      const tabs = new Set();
-      const myId = crypto.randomUUID();
-      tabs.add(myId);
-
-      // Announce ourselves
-      channel.postMessage({ type: 'join', id: myId });
-
-      // Ask who else is here
-      channel.postMessage({ type: 'ping', id: myId });
-
-      channel.onmessage = (e) => {
-        const { type, id } = e.data;
-        if (type === 'join' || type === 'pong') {
-          tabs.add(id);
-          setTabCount(tabs.size);
-        }
-        if (type === 'ping' && id !== myId) {
-          channel.postMessage({ type: 'pong', id: myId });
-        }
-        if (type === 'leave') {
-          tabs.delete(id);
-          setTabCount(tabs.size);
-        }
-      };
-
-      // Announce leave on close
-      const handleUnload = () => {
-        channel.postMessage({ type: 'leave', id: myId });
-      };
-      window.addEventListener('beforeunload', handleUnload);
-
-      return () => {
-        handleUnload();
-        channel.close();
-        window.removeEventListener('beforeunload', handleUnload);
-      };
-    } catch {
-      // BroadcastChannel not supported, just show 1
-      setTabCount(1);
     }
   }, []);
 
@@ -215,12 +166,6 @@ function App() {
           </a>
 
           <div className="flex items-center gap-4 text-[11px] text-neutral-600">
-            {tabCount !== null && (
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                {tabCount} online
-              </span>
-            )}
             {loadTime !== null && (
               <span>{loadTime}ms</span>
             )}
