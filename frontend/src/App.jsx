@@ -1,195 +1,123 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Loader from './components/Loader';
-import EnterScreen from './components/EnterScreen';
-import Skills from './components/Skills';
-import Logbook from './components/LogBook';
-import NotFound from './components/NotFound';
-import AIChatBot from './components/AIChatBot';
+import React from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from "@vercel/analytics/react";
-import { Helmet } from 'react-helmet-async';
 
-function ChatBotWrapper() {
-  const location = useLocation();
-  const showChatBot = location.pathname !== '/logbook';
-  return showChatBot ? <AIChatBot /> : null;
-}
+const socials = [
+  { label: "github", href: "https://github.com/ChaitanyaSai-Meka" },
+  { label: "linkedin", href: "https://www.linkedin.com/in/chaitanya-sai-meka/" },
+  { label: "x.com", href: "https://x.com/IAMCHAITANYASAI" },
+  { label: "leetcode", href: "https://leetcode.com/u/chaitanyasai_meka/" },
+  { label: "instagram", href: "https://www.instagram.com/chaitanyasai_meka/" },
+];
+
+const now = [
+  { label: "vizal ai", href: null, note: "software engineer intern" },
+  { label: "rishihood university", href: null, note: "b.tech cs & ai · 2024–2028" },
+];
+
+const previously = [
+  { label: "flipz", href: null, note: "freelance · react native" },
+  { label: "space club", href: null, note: "head of r&d" },
+  { label: "cybersecurity club", href: null, note: "core member" },
+];
+
+const projects = [
+  { label: "ramforze", href: "https://github.com/ChaitanyaSai-Meka/RamForze", note: "go · swiftui · distributed systems" },
+  { label: "devledger", href: "https://github.com/ChaitanyaSai-Meka/devledger", note: "go · cli · cost splitting" },
+  { label: "edgebeat", href: "https://edgebeat.vercel.app/", note: "swift · macos music visualizer" },
+  { label: "univa", href: "https://univa-ten.vercel.app/", note: "rag · vector search" },
+  { label: "credit risk system", href: "https://credit-risk-system6.streamlit.app/", note: "ml · predictive analytics" },
+  { label: "the-vault", href: "https://the-vault-smoky.vercel.app/", note: "rag · pdf q&a" },
+  { label: "apple website clone", href: "https://apple-website-ecru-xi.vercel.app/", note: "react · gsap · three.js" },
+  { label: "cyberfiction", href: "https://chaitanyasai-meka.github.io/CYBERFICTION/", note: "gsap · lenis" },
+  { label: "akira", href: "https://github.com/ChaitanyaSai-Meka/Akira", note: "voice agent · nlp" },
+];
+
+const LinkItem = ({ label, href, note, external = true }) => {
+  if (href) {
+    return (
+      <a
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className="group flex items-baseline gap-2 py-1 text-neutral-400 hover:text-white transition-colors duration-200"
+      >
+        <span className="underline decoration-neutral-700 underline-offset-4 group-hover:decoration-neutral-400 transition-colors">{label}</span>
+        {note && <span className="text-neutral-600 text-xs">· {note}</span>}
+        {external && <span className="text-neutral-600 text-xs opacity-0 group-hover:opacity-100 transition-opacity">↗</span>}
+      </a>
+    );
+  }
+  return (
+    <div className="flex items-baseline gap-2 py-1">
+      <span className="text-neutral-300">{label}</span>
+      {note && <span className="text-neutral-600 text-xs">· {note}</span>}
+    </div>
+  );
+};
+
+const Section = ({ title, children }) => (
+  <div className="mb-10">
+    <p className="text-neutral-600 text-xs uppercase tracking-[0.2em] mb-3 font-medium">{title}</p>
+    <div className="flex flex-col">{children}</div>
+  </div>
+);
 
 function App() {
-  const [started, setStarted] = useState(false);
-  const [showLoader, setShowLoader] = useState(false);
-  const [initialCheckDone, setInitialCheckDone] = useState(false);
-
-useEffect(() => {
-  const isBot = /bot|crawl|spider|slurp|bing/i.test(navigator.userAgent);
-  const isHome = window.location.pathname === '/';
-  const alreadyVisited = sessionStorage.getItem('alreadyVisited');
-
-  if (isBot) {
-    setStarted(true);
-  } else if (isHome && !alreadyVisited) {
-    setStarted(false);
-  } else {
-    setStarted(true);
-  }
-  setInitialCheckDone(true);
-}, []);
-
-useEffect(() => {
-  const warmUpServer = async () => {
-    try {
-      await fetch("https://portfolio-m60v.onrender.com/health");
-      console.log(" Backend warmed up");
-    } catch (err) {
-      console.error("Backend warm-up failed:", err);
-    }
-  };
-
-  warmUpServer();
-}, []);
-
-useEffect(() => {
-  const checkAIHealth = async () => {
-    try {
-      await fetch(`${import.meta.env.VITE_AI_SERVICE_URL}/health`);
-      console.log("AI service health check completed");
-    } catch (err) {
-      console.error("AI service health check failed:", err);
-    }
-  };
-
-  checkAIHealth();
-}, []);
-
-  const handleStart = () => {
-    sessionStorage.setItem('alreadyVisited', 'true');
-    setStarted(true);
-    setShowLoader(true);
-  };
-
-  if (!initialCheckDone) return null;
-
   return (
-    <>
-      {/* Global SEO Metadata */}
-      <Helmet>
-        <title>Chaitanya Sai Meka | CS & AI Student | Software & AI/ML</title>
+    <div className="bg-[#0a0a0a] text-white min-h-screen selection:bg-white/15 flex items-center justify-center px-6 py-20">
+      <main className="w-full max-w-md">
+        {/* Header */}
+        <div className="mb-14">
+          <p className="text-neutral-500 text-sm mb-3">hey, i'm</p>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight mb-3">
+            chaitanya sai meka
+          </h1>
+          <p className="text-neutral-500 text-sm">software engineer</p>
+        </div>
 
-        <meta
-          name="description"
-          content="Portfolio of Chaitanya Sai Meka, a Computer Science & AI student building software systems and exploring AI/ML. Experienced with Go, Python, TypeScript, Node.js, and modern backend technologies."
-        />
+        {/* Now */}
+        <Section title="now">
+          {now.map((item) => (
+            <LinkItem key={item.label} {...item} />
+          ))}
+        </Section>
 
-        <link
-          rel="canonical"
-          href="https://chaitanya-sai-meka.vercel.app/"
-        />
+        {/* Previously */}
+        <Section title="previously">
+          {previously.map((item) => (
+            <LinkItem key={item.label} {...item} />
+          ))}
+        </Section>
 
-        {/* Open Graph */}
-        <meta
-          property="og:title"
-          content="Chaitanya Sai Meka | CS & AI Student"
-        />
-        <meta
-          property="og:description"
-          content="Computer Science & AI student building software systems and exploring AI/ML, with experience in Go, Python, TypeScript, Node.js, and backend engineering."
-        />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://chaitanya-sai-meka.vercel.app/"
-        />
-        <meta
-          property="og:image"
-          content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg"
-        />
-        <meta
-          property="og:site_name"
-          content="Chaitanya Sai Meka's Portfolio"
-        />
+        {/* Projects */}
+        <Section title="projects">
+          {projects.map((item) => (
+            <LinkItem key={item.label} {...item} />
+          ))}
+        </Section>
 
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content="@IAMCHAITANYASAI" />
-        <meta
-          name="twitter:title"
-          content="Chaitanya Sai Meka | CS & AI Student"
-        />
-        <meta
-          name="twitter:description"
-          content="Computer Science & AI student building software systems and exploring AI/ML, with experience in Go, Python, TypeScript, Node.js, and backend engineering."
-        />
-        <meta
-          name="twitter:image"
-          content="https://chaitanya-sai-meka.vercel.app/profile_pic.jpg"
-        />
+        {/* Elsewhere */}
+        <Section title="elsewhere">
+          {socials.map((item) => (
+            <LinkItem key={item.label} {...item} />
+          ))}
+        </Section>
 
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {`
-                {
-                  "@context": "https://schema.org",
-                  "@graph": [
-                    {
-                      "@type": "WebSite",
-                      "name": "Chaitanya Sai Meka",
-                      "url": "https://chaitanya-sai-meka.vercel.app/"
-                    },
-                    {
-                      "@type": "Person",
-                      "name": "Chaitanya Sai Meka",
-                      "url": "https://chaitanya-sai-meka.vercel.app/",
-                      "image": "https://chaitanya-sai-meka.vercel.app/profile_pic.jpg",
-                      "description": "Computer Science and Artificial Intelligence student interested in software engineering and AI/ML, with experience building backend systems and full-stack applications.",
-                      "alumniOf": {
-                        "@type": "EducationalOrganization",
-                        "name": "Newton School of Technology, Rishihood University"
-                      },
-                      "sameAs": [
-                        "https://github.com/ChaitanyaSai-Meka",
-                        "https://www.instagram.com/chaitanyasai_meka/",
-                        "https://www.linkedin.com/in/chaitanya-sai-meka/",
-                        "https://leetcode.com/u/chaitanyasai_meka/",
-                        "https://codeforces.com/profile/Chaitanyasai_meka"
-                      ]
-                    }
-                  ]
-                }
-              `}
-        </script>
-      </Helmet>
-
-      {/* UI Flow */}
-      {!started ? (
-        <EnterScreen onEnter={handleStart} />
-      ) : showLoader ? (
-        <Loader onComplete={() => setShowLoader(false)} />
-      ) : (
-        <Router>
-          <div className="bg-white dark:bg-black">
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Hero />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/logbook" element={<Logbook />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <ChatBotWrapper />
-            <SpeedInsights />
-            <Analytics />
-          </div>
-        </Router>
-      )}
-    </>
+        {/* Resume */}
+        <div className="mt-14 pt-8 border-t border-white/5">
+          <a
+            href="/resume.pdf"
+            download="Chaitanya_Sai_Meka_Resume.pdf"
+            className="text-neutral-500 hover:text-white text-sm underline decoration-neutral-700 underline-offset-4 hover:decoration-neutral-400 transition-colors"
+          >
+            download resume ↓
+          </a>
+        </div>
+      </main>
+      <SpeedInsights />
+      <Analytics />
+    </div>
   );
 }
 
