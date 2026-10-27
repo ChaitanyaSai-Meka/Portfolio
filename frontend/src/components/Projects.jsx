@@ -29,6 +29,15 @@ const projects = [
     blurhash:"L12~P;xu00D%j]RjRjxu00WB~qxu"
   },
   {
+    title: "MocForge",
+    description:
+    "A self-hosted mock REST API platform with configurable endpoints, JSON responses, and request history.",
+    link: "https://mockforge-nine.vercel.app/",
+    code: "https://github.com/ChaitanyaSai-Meka/MockForge",
+    image: "/mockforge.webp",
+    blurhash:"L24C9e_ND%00%Mw4RjNZ004U-;_M"
+  },
+  {
     title: "Univa",
     description:
     "A Document Search Platform leveraging vector databases and LLMs for semantic search and Q&A over PDFs.",
