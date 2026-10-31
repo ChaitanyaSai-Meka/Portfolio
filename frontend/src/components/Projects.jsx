@@ -127,7 +127,7 @@ const projects = [
   {
     title: "RamForze",
     description:
-      "Local distributed task dispatcher for macOS that turns idle machines into LAN compute nodes.",
+      "Distributed C/C++ build offloader for your LAN, written in Go.",
     link: "",
     code: "https://github.com/ChaitanyaSai-Meka/RamForze",
     image: "/black_page.webp",
